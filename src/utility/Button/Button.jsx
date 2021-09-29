@@ -16,6 +16,14 @@ const Btn = styled.button`
   text-transform: uppercase;
   border: none;
 
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+  display: inline;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
   ${(props) =>
     props.primary === 'primary' &&
     css`
