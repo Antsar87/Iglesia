@@ -23,15 +23,38 @@ const Icon = styled.img`
 `;
 
 const NavIcon = () => {
+  const info = [
+    {
+      link: 'https://www.facebook.com/ministeriospalabrafiel',
+      img: Facebook,
+      id: '1',
+    },
+    {
+      link: 'https://www.instagram.com/ministeriospalabrafiel/',
+      img: Instagram,
+      id: '2',
+    },
+    {
+      link: 'https://www.youtube.com/channel/UCYXBczFMCAQSXoygG9Nt_ng',
+      img: Youtube,
+      id: '3',
+    },
+    {
+      link: 'https://www.instagram.com/ministeriospalabrafiel/',
+      img: Ticktock,
+      id: '4',
+    },
+  ];
   return (
     <Flex>
       <Img src={Logo} alt="Tu browser no lo soporta" />
 
       <Flex>
-        <Icon src={Facebook} />
-        <Icon src={Instagram} />
-        <Icon src={Youtube} />
-        <Icon src={Ticktock} />
+        {info.map(({ link, img, id }) => (
+          <a href={link} target="_blank" rel="noreferrer">
+            <Icon src={img} key={id} />
+          </a>
+        ))}
       </Flex>
     </Flex>
   );
