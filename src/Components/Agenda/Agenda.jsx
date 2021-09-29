@@ -25,6 +25,20 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
+
+  & .rec-arrow {
+    &:hover {
+      background: blue;
+    }
+  }
+  & .rec-dot {
+    background: blue;
+
+    &:focus {
+      outline: white;
+      box-shadow: #79bbc7 !important;
+    }
+  }
 `;
 
 const Img = styled.img`
@@ -38,13 +52,19 @@ const Agenda = () => {
     { img: Logo2, id: '3' },
     { img: Logo3, id: '4' },
   ];
+
   return (
     <Container>
       <h2>nuestra agenda</h2>
 
       <Fade right delay={1200}>
         <Flex>
-          <Carousel itemsToShow={3} enableMouseSwipe={false}>
+          <Carousel
+            itemsToShow={3}
+            enableMouseSwipe={false}
+            enableAutoPlay={true}
+            autoPlaySpeed={4000}
+          >
             {galery.map(({ img, id }) => (
               <Img src={img} key={id} />
             ))}
