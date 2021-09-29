@@ -33,10 +33,10 @@ const Img = styled.img`
 
 const Agenda = () => {
   const galery = [
-    { img: Logo },
-    { img: Logo1 },
-    { img: Logo2 },
-    { img: Logo3 },
+    { img: Logo, id: '1' },
+    { img: Logo1, id: '2' },
+    { img: Logo2, id: '3' },
+    { img: Logo3, id: '4' },
   ];
   return (
     <Container>
@@ -45,8 +45,8 @@ const Agenda = () => {
       <Fade right delay={1200}>
         <Flex>
           <Carousel itemsToShow={3} enableMouseSwipe={false}>
-            {galery.map(({ img }) => (
-              <Img src={img} />
+            {galery.map(({ img, id }) => (
+              <Img src={img} key={id} />
             ))}
           </Carousel>
         </Flex>
