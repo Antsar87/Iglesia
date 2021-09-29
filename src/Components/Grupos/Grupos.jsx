@@ -18,7 +18,7 @@ const Container = styled.div`
   }
 
   & p {
-    color: #eeeeeeae;
+    color: #eeeeee;
     width: 50%;
   }
 `;
@@ -38,9 +38,12 @@ const Grupos = () => {
           grupos de <br /> crecimiento
         </h2>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor unde
-          voluptatem dignissimos iure dolore in ullam aliquam blanditiis quasi,
-          voluptate veniam atque velit officiis, esse quo ex dolorem nam vitae?
+          Tratemos de ayudarnos unos a otros, y de amarnos y hacer lo bueno. No
+          dejemos de reunirnos, como hacen algunos. Al contrario, animémonos
+          cada vez más a seguir confiando en Dios, y más aún cuando ya vemos que
+          se acerca el día en que el Señor juzgará a todo el mundo. Hebreos
+          10:24-25 (TLA) Si aún no cuentas con un grupo de crecimiento, únete a
+          uno llenando tu información haciendo clic en el botón.
         </p>
         <Button color="primary" size="bold">
           ir a formulario

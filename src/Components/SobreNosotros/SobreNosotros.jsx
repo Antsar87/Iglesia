@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
 
 import Logo from './Elementos-06.jpg';
 
@@ -16,11 +17,12 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  width: 100%;
+  width: 70%;
 `;
 
 const Text = styled.div`
   color: white;
+  width: 90%;
 
   & h1 {
     text-transform: uppercase;
@@ -38,14 +40,15 @@ const SobreNosotros = () => {
       <Fade right>
         <Text>
           <h1>Quienes Somos</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-            dicta quas, quia animi nisi consequuntur maiores, consectetur
-            tempore ut nulla laudantium delectus ab ducimus ipsum eaque facere
-            sequi incidunt repellendus odit corporis. Magni exercitationem
-            fugiat expedita aut commodi iure error, voluptates dicta omnis
-            perspiciatis eligendi saepe. Aut magni voluptatem ipsa.
-          </p>
+          <Bounce right cascade>
+            <p>
+              Palabra Fiel es una gran familia, deseamos rescatar los valores
+              espirituales y morales que Dios establece en su Palabra. Queremos
+              vivir en amor y en armonía los unos con los otros como en el
+              inicio de la iglesia primitiva, todos unánimes, en un mismo
+              sentir.
+            </p>
+          </Bounce>
         </Text>
       </Fade>
     </Container>

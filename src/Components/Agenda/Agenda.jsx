@@ -11,12 +11,12 @@ import Fade from 'react-reveal/Fade';
 const Container = styled.div`
   margin-top: 30px;
   padding: 20px 0;
-  background: #a7a7a7;
+  background: #ddd;
   text-align: center;
 
   & h2 {
     text-transform: uppercase;
-    color: #0084ff;
+    color: #5aa3e7;
     font-size: 40px;
   }
 `;
