@@ -4,9 +4,10 @@ import Logo from './Elementos-10.png';
 import Logo1 from './Elementos-11.png';
 import Logo2 from './Elementos-12.png';
 import Logo3 from './Elementos-13.png';
-import Carousel from 'react-elastic-carousel';
 
 import Fade from 'react-reveal/Fade';
+
+import Slider from 'react-slick';
 
 const Container = styled.div`
   margin-top: 30px;
@@ -21,14 +22,20 @@ const Container = styled.div`
   }
 `;
 
-const Flex = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+const Box = styled.div`
+  padding: 50px;
+
+  .slick-prev:before {
+    color: blue !important;
+  }
+  .slick-next:before {
+    color: blue !important;
+  }
 `;
 
 const Img = styled.img`
   width: 280px;
+  display: inline !important;
 `;
 
 const Agenda = () => {
@@ -38,18 +45,31 @@ const Agenda = () => {
     { img: Logo2, id: '3' },
     { img: Logo3, id: '4' },
   ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <Container>
       <h2>nuestra agenda</h2>
 
       <Fade right delay={1200}>
-        <Flex>
-          <Carousel itemsToShow={3} enableMouseSwipe={false}>
+        <Box>
+          <Slider {...settings}>
             {galery.map(({ img, id }) => (
-              <Img src={img} key={id} />
+              <div>
+                <Img src={img} key={id} />
+              </div>
             ))}
-          </Carousel>
-        </Flex>
+          </Slider>
+        </Box>
       </Fade>
     </Container>
   );
