@@ -4,6 +4,7 @@ import Logo from './Elementos-10.png';
 import Logo1 from './Elementos-11.png';
 import Logo2 from './Elementos-12.png';
 import Logo3 from './Elementos-13.png';
+import Logo4 from './services.jpg';
 
 import Fade from 'react-reveal/Fade';
 
@@ -44,6 +45,7 @@ const Agenda = () => {
     { img: Logo1, id: '2' },
     { img: Logo2, id: '3' },
     { img: Logo3, id: '4' },
+    { img: Logo4, id: '5' },
   ];
 
   const settings = {

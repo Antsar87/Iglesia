@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -18,12 +18,18 @@ const Container = styled.div`
       color: black;
       transform: scale(1.1);
     }
+
+    ${(props) =>
+      props.color === 'white' &&
+      css`
+        color: white;
+      `}
   }
 `;
 
-const Menu = () => {
+const Menu = (props) => {
   return (
-    <Container>
+    <Container color={props.color}>
       <NavLink to="/">Inicio</NavLink>
       <NavLink to="/">Quienes Somos</NavLink>
       <NavLink to="/">En vivo</NavLink>
