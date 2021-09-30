@@ -43,7 +43,7 @@ const Footer = () => {
   return (
     <BackGround>
       <Container>
-        <Menu />
+        <Menu color="white" />
         <Flex style={{ margin: '20px 0' }}>
           <Logoimg src={Logo} />
           <FlexTEXT>
