@@ -1,15 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import Agenda from '../Components/Agenda/Agenda';
-import Conectate from '../Components/Conectate/Conectate';
-import Footer from '../Components/Footer/Footer';
-import Grupos from '../Components/Grupos/Grupos';
-import Menu from '../Components/Menu/Menu';
-import NavIcon from '../Components/Nav-Icon/Nav-Icon';
-import Palabra from '../Components/Palabra/Palabra';
-import SobreNosotros from '../Components/SobreNosotros/SobreNosotros';
+
+// import Agenda from '../Components/Home/Agenda/Agenda';
+// import Conectate from '..Components/Home/Conectate/Conectate';
+// import Footer from '..Components/Home/Footer/Footer';
+// import Grupos from '..Components/Home/Grupos/Grupos';
+// import Palabra from '..Components/Home/Palabra/Palabra';
+// import SobreNosotros from '..Components/Home/SobreNosotros/SobreNosotros';
+// import Button from '../utility/Button/Button';
+// import Popup from '..Components/Home/popup/Popup';
+
+
 import Button from '../utility/Button/Button';
+import Palabra from '../Components/Home/Palabra/Palabra';
+import SobreNosotros from '../Components/Home/SobreNosotros/SobreNosotros';
+import Conectate from '../Components/Home/Conectate/Conectate';
+import Agenda from '../Components/Home/Agenda/Agenda';
+import Grupos from '../Components/Home/Grupos/Grupos';
 import Rotate from 'react-reveal/Rotate';
+import styled from 'styled-components';
 
 const Container = styled.div`
   overflow: hidden;
@@ -18,17 +25,12 @@ const Container = styled.div`
 `;
 
 const Home = () => {
+  
   return (
     <>
+      
+
       <Container>
-        {/* Nav */}
-        <NavIcon />
-        {/* Nav */}
-
-        {/* Menu */}
-        <Menu />
-        {/* Menu */}
-
         {/* Button */}
         <Button color="primary" center="center">
           Peticion de Oracion
@@ -57,10 +59,7 @@ const Home = () => {
         <Grupos />
         {/* Grupos */}
       </Container>
-
-      {/* Footer */}
-      <Footer />
-      {/* Footer */}
+      
     </>
   );
 };

@@ -9,7 +9,7 @@ const Container = styled.div`
 
   & a {
     text-decoration: none;
-    color: #7e7d7d;
+    color: #3C3C3B;
     transition: all 1s ease;
     padding: 5px;
     border: 1px solid transparent;
@@ -31,7 +31,7 @@ const Menu = (props) => {
   return (
     <Container color={props.color}>
       <NavLink to="/">Inicio</NavLink>
-      <NavLink to="/">Quienes Somos</NavLink>
+      <NavLink to="/quienesSomos">Quienes Somos</NavLink>
       <NavLink to="/">En vivo</NavLink>
       <NavLink to="/">Nuestra Agenda</NavLink>
       <NavLink to="/">Grupos de Crecimiento</NavLink>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '../Menu/Menu';
 import Logo from './Elementos-16.png';
@@ -37,15 +38,22 @@ const Logoimg = styled.img`
 
 const Mapaimg = styled.img`
   width: 100px;
+  cursor: pointer;
 `;
 
-const Footer = () => {
+const Footer = (props) => {
+  const saving = () => {
+    props.ejecutar(true);
+  };
   return (
     <BackGround>
       <Container>
         <Menu color="white" />
         <Flex style={{ margin: '20px 0' }}>
-          <Logoimg src={Logo} />
+          <Link to="/">
+            <Logoimg src={Logo} />
+          </Link>
+
           <FlexTEXT>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
@@ -53,7 +61,7 @@ const Footer = () => {
               optio. Illo, deleniti!
             </p>
 
-            <Mapaimg src={Mapa} />
+            <Mapaimg src={Mapa} onClick={saving} />
           </FlexTEXT>
         </Flex>
       </Container>
