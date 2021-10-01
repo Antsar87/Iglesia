@@ -49,6 +49,20 @@ const Btn = styled.button`
   }
 
   ${(props) =>
+    props.primary === 'yellow-Bold' &&
+    css`
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #ffa600ec;
+      border-radius: 5px;
+    `}
+
+    & span {
+    font-weight: 700;
+  }
+
+  ${(props) =>
     props.size === 'bold' &&
     css`
       font-size: 25px;

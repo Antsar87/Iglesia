@@ -5,6 +5,7 @@ import Facebook from './Facebook.png';
 import Instagram from './Instagram.png';
 import Ticktock from './Ticktock.png';
 import Youtube from './Youtube.png';
+import { Link } from 'react-router-dom';
 
 const Flex = styled.div`
   display: flex;
@@ -47,8 +48,9 @@ const NavIcon = () => {
   ];
   return (
     <Flex>
-      <Img src={Logo} alt="Tu browser no lo soporta" />
-
+      <Link to="/">
+        <Img src={Logo} alt="Tu browser no lo soporta" />
+      </Link>
       <Flex>
         {info.map(({ link, img, id }) => (
           <a href={link} target="_blank" rel="noreferrer">
