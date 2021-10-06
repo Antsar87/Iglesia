@@ -24,7 +24,7 @@ const FlexTEXT = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 60%;
+  width: 50%;
 
   & p {
     color: white;
@@ -56,9 +56,8 @@ const Footer = (props) => {
 
           <FlexTEXT>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
-              placeat labore corrupti rem nisi consectetur nesciunt assumenda
-              optio. Illo, deleniti!
+              4a. Avenida y 8a. Calle, Lote 13 "A" Colonia Kennedy, Zona 18
+              Guatemala, Guatemala
             </p>
 
             <Mapaimg src={Mapa} onClick={saving} />

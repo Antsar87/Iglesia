@@ -12,14 +12,16 @@ import Slider from 'react-slick';
 
 const Container = styled.div`
   margin-top: 30px;
+
   padding: 20px 0;
-  background: #DADADA;
+  background: #dadada;
   text-align: center;
 
   & h2 {
     text-transform: uppercase;
     color: #5aa3e7;
     font-size: 40px;
+    font-family: Avenir2;
   }
 `;
 
@@ -59,7 +61,7 @@ const Agenda = () => {
   };
 
   return (
-    <Container>
+    <Container id="agenda">
       <h2>nuestra agenda</h2>
 
       <Fade right delay={1200}>

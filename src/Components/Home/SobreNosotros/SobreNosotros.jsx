@@ -61,6 +61,7 @@ const Text = styled.div`
 
   & h1 {
     text-transform: uppercase;
+    font-family: Avenir2;
   }
 
   & p {
