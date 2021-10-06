@@ -11,25 +11,29 @@ const Box = styled.div`
   height: 350px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-const Flex = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  margin-bottom: 30px;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+  row-gap: 20px;
+
+  .box-child-last {
+    grid-column: 1 / 3;
+  
+  }
 `;
 
 const BoxText = styled.div`
   text-align: center;
-  height: 150px;
-  width: 400px;
-  padding-top: 20px;
 
   & h3 {
     color: #ffa600ec;
     font-size: 40px;
+    font-family: Avenir2;
   }
 
   & p {
@@ -41,10 +45,10 @@ const Valores = () => {
   return (
     <Container>
       <Box>
-        <Flex>
-          <BoxText>
-            <Fade top >
-            <h3>Vision</h3>
+        <Grid>
+          <BoxText className="box-child-first">
+            <Fade top>
+              <h3>Vision</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
@@ -55,9 +59,9 @@ const Valores = () => {
               </p>
             </Fade>
           </BoxText>
-          <BoxText>
-          <Fade top >
-            <h3>Mision</h3>
+          <BoxText className="box-child-center">
+            <Fade top>
+              <h3>Mision</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
@@ -68,20 +72,20 @@ const Valores = () => {
               </p>
             </Fade>
           </BoxText>
-        </Flex>
-        <BoxText>
-        <Fade top >
-            <h3>Valores</h3>
+          <BoxText className="box-child-last">
+            <Fade top>
+              <h3>Valores</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
                 {' '}
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt
-                expedita sint animi amet ab magnam reprehenderit! Dignissimos
-                nisi adipisci fuga?
+                expedita sint animi amet <br/> ab magnam reprehenderit!
+                Dignissimos nisi adipisci fuga?
               </p>
             </Fade>
-        </BoxText>
+          </BoxText>
+        </Grid>
       </Box>
     </Container>
   );

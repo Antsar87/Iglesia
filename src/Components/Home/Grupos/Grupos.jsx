@@ -38,6 +38,7 @@ const Container = styled.div`
     color: white;
     text-transform: uppercase;
     font-size: 30px;
+    font-family: Avenir2;
   }
 
   & p {
@@ -74,6 +75,8 @@ const Grupos = () => {
             ya vemos que se acerca el día en que el Señor juzgará a todo el
             mundo.
             <span> Hebreos 10:24-25 (TLA)</span>
+          </p>
+          <p>
             <br /> Si aún no cuentas con un grupo de crecimiento, únete a uno
             llenando tu información haciendo clic en el botón.
           </p>

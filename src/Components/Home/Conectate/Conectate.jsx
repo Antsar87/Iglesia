@@ -19,6 +19,10 @@ const Flex = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Box = styled.div`
@@ -34,6 +38,7 @@ const H1 = styled.h1`
   font-weight: 800px;
   font-size: 70px;
   letter-spacing: 2px;
+  font-family: Avenir2;
   &::first-letter {
     text-transform: uppercase;
   }
@@ -75,9 +80,15 @@ const Conectate = () => {
               ))}
             </FlexIcon>
           </Box>
-          <Button size="big" color="primary-Bold" center="center">
-            Conectate <span>aqui</span>
-          </Button>
+          <a
+            href="https://palabrafiel.online.church/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button size="big" color="primary-Bold" center="center">
+              Conectate <span>aqui</span>
+            </Button>
+          </a>
         </Fade>
       </Flex>
     </Container>
