@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Map from '../Map/Map';
 
 const Pop = styled.div`
   height: 100vh;

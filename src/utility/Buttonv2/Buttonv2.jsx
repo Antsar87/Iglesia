@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Buttonv2 = styled.a`
