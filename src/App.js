@@ -13,6 +13,7 @@ import PeticionDeOracion from './Pages/PeticionDeOracion.jsx';
 import GruposDeCrecimiento from './Pages/GruposDeCrecimiento.jsx';
 import Presentacion from './Pages/Presentacion.jsx';
 import Map from './utility/Map/Map.jsx';
+import Buttonv2 from './utility/Buttonv2/Buttonv2.jsx';
 
 const Container = styled.div`
   overflow: hidden;
@@ -26,22 +27,6 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Button = styled.a`
-  background: #ffdd00;
-  color: black;
-  text-decoration: none;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 90%;
-  transition: all 1s ease-in-out;
-
-  &:hover {
-    color: black;
-    transform: scale(1.1);
-  }
 `;
 
 function App() {
@@ -70,12 +55,16 @@ function App() {
         <>
           <Popup saving={savecoffe}>
             <Flex>
-              <Button
+              <Buttonv2
                 href="https://www.buymeacoffee.com/Antsar87"
                 target="_blank"
               >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
                 ☕️ Buy me a coffee
-              </Button>
+              </Buttonv2>
             </Flex>
           </Popup>
         </>
@@ -105,7 +94,7 @@ function App() {
       </Switch>
 
       {/* Footer */}
-      <Footer ejecutar={savemapa} saving={savecoffe}/>
+      <Footer ejecutar={savemapa} saving={savecoffe} />
       {/* Footer */}
     </>
   );

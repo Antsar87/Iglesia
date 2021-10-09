@@ -28,7 +28,7 @@ const PopBox = styled.div`
   padding: 20px;
   width: 900px;
   height: 400px;
-  background: #fff;
+  background: #696969ef;
   border-radius: 5px;
   transition: all 5s ease-in-out;
   z-index: 11;
