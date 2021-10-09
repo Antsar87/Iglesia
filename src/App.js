@@ -43,32 +43,24 @@ function App() {
   };
   return (
     <>
-      {mapa === true ? (
-        <>
-          <Popup saving={savemapa}>
-            <Map />
-          </Popup>
-        </>
-      ) : null}
+      <Popup show={coffe} onHide={() => setcoffe(false)} titulo="Puedes Donar Aqui">
+        <Flex>
+          <Buttonv2
+            href="https://www.buymeacoffee.com/Antsar87"
+            target="_blank"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            ☕️ Buy me a coffee
+          </Buttonv2>
+        </Flex>
+      </Popup>
 
-      {coffe === true ? (
-        <>
-          <Popup saving={savecoffe}>
-            <Flex>
-              <Buttonv2
-                href="https://www.buymeacoffee.com/Antsar87"
-                target="_blank"
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                ☕️ Buy me a coffee
-              </Buttonv2>
-            </Flex>
-          </Popup>
-        </>
-      ) : null}
+      <Popup show={mapa} onHide={() => setmapa(false)} titulo="Ubicacion De la iglesia">
+        <Map/>
+      </Popup>
 
       <Container>
         {/* Nav */}
