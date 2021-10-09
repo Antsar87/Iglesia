@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Bounce from 'react-reveal/Bounce';
-
+import Button from '../../../utility/Button/Button';
 import Background from './Elementos-16.jpg';
 import Img from './Elementos-17.jpg';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   margin-top: 30px;
@@ -86,6 +87,11 @@ const SobreNosotros = () => {
                 en el inicio de la iglesia primitiva, todos unánimes, en un
                 mismo sentir.
               </p>
+              <Link to="/quienesSomos">
+                <Button color="primary" size="bold">
+                  CONOCE MAS
+                </Button>
+              </Link>
             </Bounce>
           </Text>
         </Fade>

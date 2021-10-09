@@ -53,8 +53,8 @@ const NavIcon = () => {
       </Link>
       <Flex>
         {info.map(({ link, img, id }) => (
-          <a href={link} target="_blank" rel="noreferrer">
-            <Icon src={img} key={id} />
+          <a href={link} target="_blank" rel="noreferrer" key={id}>
+            <Icon src={img} />
           </a>
         ))}
       </Flex>

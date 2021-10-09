@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../../utility/Button/Button';
 import Logo from './bible-study.jpg';
+import { Link } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 
 const Container = styled.div`
@@ -57,13 +58,17 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  a {
+    display: inline;
+  }
 `;
 
 const Grupos = () => {
   return (
     <Container>
-      <Flex>
-        <Fade bottom delay={1100}>
+      <Fade bottom delay={1100}>
+        <Flex>
           <h2>
             grupos de <br /> crecimiento
           </h2>
@@ -81,11 +86,15 @@ const Grupos = () => {
             llenando tu información haciendo clic en el botón.
           </p>
 
-          <Button color="primary" size="bold">
-            ir a formulario
-          </Button>
-        </Fade>
-      </Flex>
+          <div>
+            <Link to="/gruposdecrecimiento">
+              <Button color="primary" size="bold">
+                ir a formulario
+              </Button>
+            </Link>
+          </div>
+        </Flex>
+      </Fade>
     </Container>
   );
 };

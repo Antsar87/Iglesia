@@ -5,9 +5,13 @@ import Nosotros from './Pages/Nosotros.jsx';
 import NavIcon from './Components/Nav-Icon/Nav-Icon.jsx';
 import Menu from './Components/Menu/Menu.jsx';
 import styled from 'styled-components';
-import Popup from './Components/Home/popup/Popup.jsx';
+import Popup from './utility/popup/Popup.jsx';
 import { useState } from 'react';
 import Footer from './Components/Footer/Footer.jsx';
+import SoyNuevo from './Pages/SoyNuevo.jsx';
+import PeticionDeOracion from './Pages/PeticionDeOracion.jsx';
+import GruposDeCrecimiento from './Pages/GruposDeCrecimiento.jsx';
+import Presentacion from './Pages/Presentacion.jsx';
 
 const Container = styled.div`
   overflow: hidden;
@@ -19,15 +23,15 @@ function App() {
 
   const save = (conseguir) => {
     setTF(conseguir);
-    console.log(conseguir);
   };
   return (
     <>
-    {TF === true ? (
+      {TF === true ? (
         <>
           <Popup saving={save} />
         </>
       ) : null}
+
       <Container>
         {/* Nav */}
         <NavIcon />
@@ -41,6 +45,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/quienesSomos" component={Nosotros} />
+        <Route exact path="/soynuevo" component={SoyNuevo} />
+        <Route exact path="/peticiondeoracion" component={PeticionDeOracion} />
+        <Route exact path="/gruposdecrecimiento" component={GruposDeCrecimiento} />
+        <Route exact path="/presentacion" component={Presentacion} />
+
       </Switch>
 
       {/* Footer */}

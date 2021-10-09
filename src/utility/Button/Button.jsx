@@ -1,17 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Container = styled.div`
-  margin-top: 20px;
 
-  ${(props) =>
-    props.center === 'center' &&
-    css`
-      text-align: center;
-    `}
-`;
-
-const Btn = styled.button`
+const Button = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   border: none;
@@ -25,7 +16,7 @@ const Btn = styled.button`
   }
 
   ${(props) =>
-    props.primary === 'primary' &&
+    props.color === 'primary' &&
     css`
       color: white;
       font-size: 20px;
@@ -35,7 +26,7 @@ const Btn = styled.button`
     `}
 
   ${(props) =>
-    props.primary === 'primary-Bold' &&
+    props.color === 'primary-Bold' &&
     css`
       color: white;
       font-size: 20px;
@@ -44,12 +35,12 @@ const Btn = styled.button`
       border-radius: 5px;
     `}
 
-    & span {
+      & span {
     font-weight: 700;
   }
 
   ${(props) =>
-    props.primary === 'yellow-Bold' &&
+    props.color === 'yellow-Bold' &&
     css`
       color: white;
       font-size: 20px;
@@ -58,7 +49,7 @@ const Btn = styled.button`
       border-radius: 5px;
     `}
 
-    & span {
+  & span {
     font-weight: 700;
   }
 
@@ -79,15 +70,5 @@ const Btn = styled.button`
     `}
 `;
 
-const Button = (props) => {
-  return (
-    <Container center={props.center}>
-      {' '}
-      <Btn primary={props.color} size={props.size}>
-        {props.children}
-      </Btn>
-    </Container>
-  );
-};
 
 export default Button;

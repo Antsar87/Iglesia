@@ -1,4 +1,3 @@
-
 // import Agenda from '../Components/Home/Agenda/Agenda';
 // import Conectate from '..Components/Home/Conectate/Conectate';
 // import Footer from '..Components/Home/Footer/Footer';
@@ -8,7 +7,6 @@
 // import Button from '../utility/Button/Button';
 // import Popup from '..Components/Home/popup/Popup';
 
-
 import Button from '../utility/Button/Button';
 import Palabra from '../Components/Home/Palabra/Palabra';
 import SobreNosotros from '../Components/Home/SobreNosotros/SobreNosotros';
@@ -17,24 +15,31 @@ import Agenda from '../Components/Home/Agenda/Agenda';
 import Grupos from '../Components/Home/Grupos/Grupos';
 import Rotate from 'react-reveal/Rotate';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   overflow: hidden;
   max-width: 1200px;
   margin: 10px auto 0 auto;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Home = () => {
-  
   return (
     <>
-      
-
       <Container>
         {/* Button */}
-        <Button color="primary" center="center">
-          Peticion de Oracion
-        </Button>
+        <div style={{ textAlign: 'center' }}>
+          <Link to="/peticiondeoracion">
+            <Button color="primary" center="center">
+              Peticion de Oracion
+            </Button>
+          </Link>
+        </div>
+
         {/* Button */}
 
         {/* Palabra */}
@@ -59,7 +64,6 @@ const Home = () => {
         <Grupos />
         {/* Grupos */}
       </Container>
-      
     </>
   );
 };

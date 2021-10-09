@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from './Elementos-10.png';
-import Logo1 from './Elementos-11.png';
-import Logo2 from './Elementos-12.png';
-import Logo3 from './Elementos-13.png';
-import Logo4 from './services.jpg';
+import { Link } from 'react-router-dom';
+
+import img from './Elementos-10.png';
+import img1 from './Elementos-11.png';
+import img2 from './Elementos-12.png';
+import img3 from './Elementos-13.png';
+import img4 from './services.jpg';
+import img5 from './presentacion.jpg';
 
 import Fade from 'react-reveal/Fade';
 
@@ -43,11 +46,12 @@ const Img = styled.img`
 
 const Agenda = () => {
   const galery = [
-    { img: Logo, id: '1' },
-    { img: Logo1, id: '2' },
-    { img: Logo2, id: '3' },
-    { img: Logo3, id: '4' },
-    { img: Logo4, id: '5' },
+    { img: img, id: '1' },
+    { img: img1, id: '2' },
+    { img: img2, id: '3' },
+    { img: img3, id: '4' },
+    { img: img4, id: '5' },
+    { img: img5, link: 'presentacion', id: '6' },
   ];
 
   const settings = {
@@ -67,10 +71,10 @@ const Agenda = () => {
       <Fade right delay={1200}>
         <Box>
           <Slider {...settings}>
-            {galery.map(({ img, id }) => (
-              <div>
-                <Img src={img} key={id} />
-              </div>
+            {galery.map(({ img, id, link }) => (
+              <Link key={id} to={`/${link ? 'presentacion' : ''}`}>
+                <Img src={img} />
+              </Link>
             ))}
           </Slider>
         </Box>
