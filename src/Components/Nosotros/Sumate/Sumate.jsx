@@ -24,6 +24,10 @@ const Background = styled.div`
     background: linear-gradient(#d34b39ab, #d34b39a9);
     z-index: -1;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Container = styled.div`
@@ -54,9 +58,15 @@ const Sumate = () => {
           <Flex>
             <Fade bottom delay={1000}>
               <Title>sumate a la familia palabra fiel </Title>
-              <Button size="big" color="yellow-Bold">
-                Conectate
-              </Button>
+              <a
+                href="https://palabrafiel.online.church/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button size="big" color="yellow-Bold">
+                  Conectate
+                </Button>
+              </a>
             </Fade>
           </Flex>
         </Container>

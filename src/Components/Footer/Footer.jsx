@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '../Menu/Menu';
 import Logo from './Elementos-16.png';
-import Mapa from './Elementos-17.png';
+import Button from '../../utility/Button/Button';
 
 const BackGround = styled.div`
   background: #0c59b5;
@@ -18,6 +18,7 @@ const Container = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const FlexTEXT = styled.div`
@@ -29,16 +30,12 @@ const FlexTEXT = styled.div`
   & p {
     color: white;
     text-align: end;
+    margin: 0 !important;
   }
 `;
 
 const Logoimg = styled.img`
-  height: 100px;
-`;
-
-const Mapaimg = styled.img`
-  width: 100px;
-  cursor: pointer;
+  height: 80px;
 `;
 
 const Footer = (props) => {
@@ -60,7 +57,9 @@ const Footer = (props) => {
               Guatemala, Guatemala
             </p>
 
-            <Mapaimg src={Mapa} onClick={saving} />
+            <div onClick={saving}>
+              <Button>Mostrar el mapa</Button>
+            </div>
           </FlexTEXT>
         </Flex>
       </Container>

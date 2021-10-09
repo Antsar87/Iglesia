@@ -21,6 +21,7 @@ const Flex = styled.div`
   height: 100%;
 
   a {
+    margin-top: 10px;
     text-decoration: none;
   }
 `;

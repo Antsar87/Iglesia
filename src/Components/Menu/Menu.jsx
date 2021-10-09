@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -38,8 +38,8 @@ const Menu = (props) => {
   return (
     <Container>
       <Flex color={props.color}>
-        <NavLink to="/">Inicio</NavLink>
-        <NavLink to="/quienesSomos">Quienes Somos</NavLink>
+        <Link to="/">Inicio</Link>
+        <Link to="/quienesSomos">Quienes Somos</Link>
 
         <a
           href="https://palabrafiel.online.church/"
@@ -50,9 +50,9 @@ const Menu = (props) => {
         </a>
         <a href="#agenda">Nuestra Agenda</a>
 
-        <NavLink to="/">Grupos de Crecimiento</NavLink>
+        <Link to="/gruposdecrecimiento">Grupos de Crecimiento</Link>
 
-        <NavLink to="/">Soy Nuevo</NavLink>
+        <Link to="/soynuevo">Soy Nuevo</Link>
 
         <NavDropdown
           id="nav-dropdown-dark-example"
@@ -67,7 +67,7 @@ const Menu = (props) => {
           </NavDropdown.Item>
         </NavDropdown>
 
-        <NavLink to="/">Dar</NavLink>
+        <Link to="/">Dar</Link>
       </Flex>
     </Container>
   );
