@@ -12,23 +12,72 @@ import SoyNuevo from './Pages/SoyNuevo.jsx';
 import PeticionDeOracion from './Pages/PeticionDeOracion.jsx';
 import GruposDeCrecimiento from './Pages/GruposDeCrecimiento.jsx';
 import Presentacion from './Pages/Presentacion.jsx';
+import Map from './utility/Map/Map.jsx';
 
 const Container = styled.div`
   overflow: hidden;
   max-width: 1200px;
   margin: 10px auto 0 auto;
 `;
-function App() {
-  const [TF, setTF] = useState(false);
 
-  const save = (conseguir) => {
-    setTF(conseguir);
+const Flex = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Button = styled.a`
+  background: #ffdd00;
+  color: black;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 90%;
+  transition: all 1s ease-in-out;
+
+  &:hover {
+    color: black;
+    transform: scale(1.1);
+  }
+`;
+
+function App() {
+  const [mapa, setmapa] = useState(false);
+
+  const [coffe, setcoffe] = useState(false);
+
+  const savemapa = (conseguir) => {
+    setmapa(conseguir);
+  };
+
+  const savecoffe = (conseguir) => {
+    setcoffe(conseguir);
   };
   return (
     <>
-      {TF === true ? (
+      {mapa === true ? (
         <>
-          <Popup saving={save} />
+          <Popup saving={savemapa}>
+            <Map />
+          </Popup>
+        </>
+      ) : null}
+
+      {coffe === true ? (
+        <>
+          <Popup saving={savecoffe}>
+            <Flex>
+              <Button
+                href="https://www.buymeacoffee.com/Antsar87"
+                target="_blank"
+              >
+                ☕️ Buy me a coffee
+              </Button>
+            </Flex>
+          </Popup>
         </>
       ) : null}
 
@@ -38,7 +87,7 @@ function App() {
         {/* Nav */}
 
         {/* Menu */}
-        <Menu />
+        <Menu saving={savecoffe} />
         {/* Menu */}
       </Container>
 
@@ -47,13 +96,16 @@ function App() {
         <Route exact path="/quienesSomos" component={Nosotros} />
         <Route exact path="/soynuevo" component={SoyNuevo} />
         <Route exact path="/peticiondeoracion" component={PeticionDeOracion} />
-        <Route exact path="/gruposdecrecimiento" component={GruposDeCrecimiento} />
+        <Route
+          exact
+          path="/gruposdecrecimiento"
+          component={GruposDeCrecimiento}
+        />
         <Route exact path="/presentacion" component={Presentacion} />
-
       </Switch>
 
       {/* Footer */}
-      <Footer ejecutar={save} />
+      <Footer ejecutar={savemapa} saving={savecoffe}/>
       {/* Footer */}
     </>
   );

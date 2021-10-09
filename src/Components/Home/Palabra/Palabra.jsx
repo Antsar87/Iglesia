@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Typed from 'react-typed';
-import video from './Video.mp4';
+import videowe from "./video3.webm"
 
 const Container = styled.div`
   margin-top: 30px;
@@ -41,7 +41,7 @@ const Palabra = () => {
   return (
     <Container>
       <Video id="video" autoPlay loop muted>
-        <source src={video} type="video/mp4"></source>
+        <source src={videowe} type="video/webm"></source>
       </Video>
       <Flex>
         <Box>
