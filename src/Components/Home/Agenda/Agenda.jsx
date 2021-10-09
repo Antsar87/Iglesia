@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import img from './Elementos-10.png';
-import img1 from './Elementos-11.png';
-import img2 from './Elementos-12.png';
-import img3 from './Elementos-13.png';
+import img from './Elementos-10.jpg';
+import img1 from './Elementos-11.jpg';
+import img2 from './Elementos-12.jpg';
+import img3 from './Elementos-13.jpg';
 import img4 from './services.jpg';
 import img5 from './presentacion.jpg';
 

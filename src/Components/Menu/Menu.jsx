@@ -13,7 +13,16 @@ const Flex = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  & a {
+  ${(props) =>
+    props.color === 'white' &&
+    css`
+      a,
+      button {
+        color: white !important;
+      }
+    `}
+
+  & a, button {
     display: inline;
     text-decoration: none;
     color: #3c3c3b;
@@ -25,13 +34,12 @@ const Flex = styled.div`
       color: black;
       transform: scale(1.1);
     }
-
-    ${(props) =>
-      props.color === 'white' &&
-      css`
-        color: white;
-      `}
   }
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
 `;
 
 const Menu = (props) => {
@@ -67,7 +75,9 @@ const Menu = (props) => {
           </NavDropdown.Item>
         </NavDropdown>
 
-        <Link to="/">Dar</Link>
+        <div onClick={() => props.saving(true)}>
+          <Button>Dar</Button>
+        </div>
       </Flex>
     </Container>
   );

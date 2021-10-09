@@ -45,7 +45,7 @@ const Footer = (props) => {
   return (
     <BackGround>
       <Container>
-        <Menu color="white" />
+        <Menu color="white" saving={props.saving}/>
         <Flex style={{ margin: '20px 0' }}>
           <Link to="/">
             <Logoimg src={Logo} />
