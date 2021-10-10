@@ -76,7 +76,7 @@ const FormOracion = () => {
             <Input
               tipo="textarea"
               name="peticion"
-              placeholder="Peticion:"
+              placeholder="Petición:"
               Change={save}
             />
           </Form>

@@ -58,10 +58,10 @@ const Sumate = () => {
         <Container>
           <Flex>
             <Fade bottom delay={1000}>
-              <Title>SÚMATE A LA FAMILIA PALABRA FIEL CONÉCTATE </Title>
+              <Title>SÚMATE A LA FAMILIA PALABRA FIEL</Title>
               <Link to="/soynuevo">
                 <Button size="big" color="yellow-Bold">
-                  Conectate
+                  CONÉCTATE
                 </Button>
               </Link>
             </Fade>

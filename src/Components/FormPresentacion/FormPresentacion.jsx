@@ -62,13 +62,13 @@ const FormPresentacion = () => {
           <Form>
             <Input placeholder="Fecha" type="text" name="fecha" Change={save} />
             <Input
-              placeholder="nombre completo del niño (a)"
+              placeholder="Nombre completo del niño (a)"
               type="text"
               name="nombre"
               Change={save}
             />
             <Input
-              placeholder="edad del niño"
+              placeholder="Edad del niño"
               type="number"
               name="edad"
               Change={save}
