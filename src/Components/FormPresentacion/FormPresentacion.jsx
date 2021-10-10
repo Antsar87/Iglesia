@@ -56,7 +56,7 @@ const FormPresentacion = () => {
   };
   return (
     <>
-      <FormHeader>Presentacion de niños</FormHeader>
+      <FormHeader>PRESENTACIÓN DE NIÑOS</FormHeader>
       <Container>
         <Flex>
           <Form>
@@ -86,21 +86,24 @@ const FormPresentacion = () => {
               Change={save}
             />
             <Input
-              placeholder="No. telefono"
+              placeholder="No. teléfono"
               type="tel"
               name="tel"
               Change={save}
             />
             <Input
               Default="Servicio al que asiste dia domingo"
-              valores={['']}
+              valores={[
+                { opciones: '8:00 A.M.', id: '1' },
+                { opciones: '10:00 A.M.', id: '2' },
+              ]}
               type="text"
               tipo="option"
               name="servicio"
               Change={save}
             />
             <Input
-              placeholder="Nombre del Lider"
+              placeholder="Nombre de Líder"
               type="text"
               name="nombrelider"
               Change={save}

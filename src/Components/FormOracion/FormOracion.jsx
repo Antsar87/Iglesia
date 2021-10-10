@@ -51,7 +51,7 @@ const FormOracion = () => {
   };
   return (
     <>
-      <FormHeader color="blue">Peticion de oracion</FormHeader>
+      <FormHeader color="blue">PETICIÓN DE ORACIÓN</FormHeader>
       <Container>
         <Flex>
           <Form>
@@ -68,7 +68,7 @@ const FormOracion = () => {
               Change={save}
             />
             <Input
-              placeholder="Telefono de contacto"
+              placeholder="Teléfono de contacto"
               type="tel"
               name="tel"
               Change={save}

@@ -77,7 +77,7 @@ const SobreNosotros = () => {
         <Foto src={Img} />
         <Fade right>
           <Text>
-            <h1>Quienes Somos</h1>
+            <h1>QUIÉNES SOMOS</h1>
             <Bounce right cascade>
               <p>
                 Palabra Fiel es una gran familia, deseamos rescatar los valores
@@ -89,7 +89,7 @@ const SobreNosotros = () => {
               </p>
               <Link to="/quienesSomos">
                 <Button color="primary" size="bold">
-                  CONOCE MAS
+                  CONOCE MÁS
                 </Button>
               </Link>
             </Bounce>

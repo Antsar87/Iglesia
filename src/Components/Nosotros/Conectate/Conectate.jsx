@@ -65,7 +65,7 @@ const Conectate = () => {
         <Container>
           <Box>
             <Fade bottom delay={1000}>
-              <Title>conectate con nosotros </Title>
+              <Title>CONÉCTATE CON NOSOTROS </Title>
               <BoxIcon>
                 {info.map(({ id, img, link }) => (
                   <a target="_blank" href={link} rel="noreferrer">

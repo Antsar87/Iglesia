@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../../../utility/Button/Button';
 import back from './Elementos-26.jpg';
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 
 const Background = styled.div`
   background: url(${back}) no-repeat;
@@ -57,16 +58,12 @@ const Sumate = () => {
         <Container>
           <Flex>
             <Fade bottom delay={1000}>
-              <Title>sumate a la familia palabra fiel </Title>
-              <a
-                href="https://palabrafiel.online.church/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Title>SÚMATE A LA FAMILIA PALABRA FIEL CONÉCTATE </Title>
+              <Link to="/soynuevo">
                 <Button size="big" color="yellow-Bold">
                   Conectate
                 </Button>
-              </a>
+              </Link>
             </Fade>
           </Flex>
         </Container>

@@ -48,7 +48,7 @@ const Valores = () => {
         <Grid>
           <BoxText className="box-child-first">
             <Fade top>
-              <h3>Vision</h3>
+              <h3>Visión</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
@@ -61,7 +61,7 @@ const Valores = () => {
           </BoxText>
           <BoxText className="box-child-center">
             <Fade top>
-              <h3>Mision</h3>
+              <h3>Misión</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>

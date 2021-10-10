@@ -47,7 +47,7 @@ const Menu = (props) => {
     <Container>
       <Flex color={props.color}>
         <Link to="/">Inicio</Link>
-        <Link to="/quienesSomos">Quienes Somos</Link>
+        <Link to="/quienesSomos">Quiénes Somos</Link>
 
         <a
           href="https://palabrafiel.online.church/"
@@ -71,7 +71,7 @@ const Menu = (props) => {
             href="https://instituto.ministeriospalabrafiel.org"
             target="_blank"
           >
-            Instituto Biblico
+            Instituto Bíblico
           </NavDropdown.Item>
         </NavDropdown>
 

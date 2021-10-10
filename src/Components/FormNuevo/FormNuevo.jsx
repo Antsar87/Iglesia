@@ -68,7 +68,7 @@ const FormNuevo = () => {
               Change={save}
             />
             <Input
-              placeholder="Telefono de contacto"
+              placeholder="Teléfono de contacto"
               type="tel"
               name="tel"
               Change={save}

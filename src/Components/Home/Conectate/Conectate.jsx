@@ -73,7 +73,7 @@ const Conectate = () => {
             <H1>iglesia en casa </H1>
             <P>
               {' '}
-              domingos - 08:00 a.m. / 10:00 a.m <br /> miercoles - 08:00 p.m
+              Domingos - 08:00 A.M. / 10:00 A.M. <br /> Miércoles - 6:50 P.M.
             </P>
             <FlexIcon>
               {Info.map(({ id, url }) => (
@@ -87,7 +87,7 @@ const Conectate = () => {
             rel="noreferrer"
           >
             <Button size="big" color="primary-Bold" center="center">
-              Conectate <span>aqui</span>
+            CONÉCTATE  <span>AQUÍ</span>
             </Button>
           </a>
         </Fade>

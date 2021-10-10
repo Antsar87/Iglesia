@@ -82,7 +82,7 @@ const FormGrupo = () => {
               Change={save}
             />
             <Input
-              placeholder="Telefono de contacto"
+              placeholder="Teléfono de contacto"
               type="tel"
               name="tel"
               Change={save}
@@ -100,7 +100,7 @@ const FormGrupo = () => {
             />
             <Input
               tipo="option"
-              Default="Dia"
+              Default="Día"
               name="dia"
               valores={[
                 { opciones: 'Lunes', id: '1' },
