@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
 import Button from '../../utility/Button/Button';
 
+import emailjs from 'emailjs-com';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
@@ -54,6 +55,8 @@ const FormPresentacion = () => {
     tiempoasistir: '',
   });
 
+  const form = useRef();
+
   const {
     fecha,
     nombre,
@@ -80,6 +83,7 @@ const FormPresentacion = () => {
   const [VoFLider, setVoFLider] = useState('');
   const [VoFAsistir, setVoFAsistir] = useState('');
   const [popup, setpopup] = useState('');
+  const [textpopup, settextpopup] = useState("")
   ///Validaciones States
 
   useEffect(() => {
@@ -176,8 +180,25 @@ const FormPresentacion = () => {
     ) {
       return;
     }
+
     setStart(true);
     setpopup(true);
+
+    emailjs
+      .sendForm(
+        'service_qtagz2l',
+        'template_vil954u',
+        e.target,
+        'user_mu1Ke4tCNrIblNSCDFKhw'
+      )
+      .then(
+        (result) => {
+          settextpopup("Fue Enviado Excitosamente")
+        },
+        (error) => {
+          settextpopup("Salio Algo Mal Intente de nuevo o mas Tarde")
+        }
+      );
 
     setinfo({
       nombre: '',
@@ -197,7 +218,7 @@ const FormPresentacion = () => {
       <FormHeader>PRESENTACIÓN DE NIÑOS</FormHeader>
       <Container>
         <Flex>
-          <Form onSubmit={send}>
+          <Form onSubmit={send} ref={form}>
             <Input
               placeholder="Fecha"
               type="date"
@@ -269,7 +290,7 @@ const FormPresentacion = () => {
             />
             <Input
               placeholder="Tiempo de asistir a la iglesia"
-              type="tel"
+              type="text"
               name="tiempoasistir"
               Change={save}
               validation={VoFAsistir}
@@ -299,9 +320,9 @@ const FormPresentacion = () => {
       <Popup
         show={popup}
         onHide={() => setpopup(false)}
-        titulo="Envio Completado"
+        titulo="Espere un momento..."
       >
-        <h3>Enviado</h3>
+        <h3>{textpopup}</h3>
       </Popup>
     </>
   );

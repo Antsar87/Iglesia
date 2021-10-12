@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import emailjs from 'emailjs-com';
 
 //////
 import FormFooter from '../../utility/formFooter/FormFooter';
@@ -53,9 +54,12 @@ const FormGrupo = () => {
     dia: '',
   });
 
+  const form = useRef();
+
   //////// Validacion
   const [start, setStart] = useState(true);
   const [popup, setpopup] = useState();
+  const [textpopup, settextpopup] = useState();
 
   ///Validaciones States
   const [VoFNombre, setVoFNombre] = useState('');
@@ -139,6 +143,22 @@ const FormGrupo = () => {
     }
     setStart(true);
 
+    emailjs
+      .sendForm(
+        'service_qtagz2l',
+        'template_vil954u',
+        e.target,
+        'user_mu1Ke4tCNrIblNSCDFKhw'
+      )
+      .then(
+        (result) => {
+          settextpopup('Fue Enviado Excitosamente');
+        },
+        (error) => {
+          settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
+        }
+      );
+
     setinfo({ nombre: '', apellido: '', tel: '' });
     setpopup(true);
   };
@@ -149,7 +169,7 @@ const FormGrupo = () => {
       <FormHeader color="yellow">Grupos de Crecimiento</FormHeader>
       <Container>
         <Flex>
-          <Form onSubmit={send}>
+          <Form onSubmit={send} ref={form}>
             <Input
               placeholder="Nombre"
               type="text"
@@ -245,9 +265,9 @@ const FormGrupo = () => {
       <Popup
         show={popup}
         onHide={() => setpopup(false)}
-        titulo="Envio Completado"
+        titulo="Espere un Momento"
       >
-        <h3>Enviado</h3>
+        <h3>{textpopup}</h3>
       </Popup>
     </>
   );

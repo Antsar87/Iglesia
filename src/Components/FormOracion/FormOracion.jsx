@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import FormFooter from '../../utility/formFooter/FormFooter';
@@ -9,6 +9,7 @@ import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionBox } from '../Validaciones/ValidacionBox';
 import Popup from '../../utility/popup/Popup';
+import emailjs from 'emailjs-com';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -54,12 +55,15 @@ const FormOracion = () => {
   //////// Validacion
   const [start, setStart] = useState(true);
   const [popup, setpopup] = useState();
+  const [textpopup, settextpopup] = useState();
   ///Validaciones States
   const [VoFNombre, setVoFNombre] = useState('');
   const [VoFApellido, setVoFApellido] = useState('');
   const [VoFTelefono, setVoFTelefono] = useState('');
   const [VoFPeticion, setVoFPeticion] = useState('');
   ///Validaciones States
+
+  const form = useRef();
 
   useEffect(() => {
     if (start === true) {
@@ -102,7 +106,6 @@ const FormOracion = () => {
     setVoFPeticion(ValidacionBox(peticion));
 
     setStart(false);
-
     ///Validacion De todos
     if (
       nombre.trim() === '' ||
@@ -117,6 +120,23 @@ const FormOracion = () => {
     setStart(true);
     setpopup(true);
 
+    emailjs
+      .sendForm(
+        'service_qtagz2l',
+        'template_xgogu37',
+        e.target,
+        'user_mu1Ke4tCNrIblNSCDFKhw'
+      )
+      .then(
+        (result) => {
+          settextpopup("Fue Enviado Excitosamente")
+        },
+        (error) => {
+          settextpopup("Algo Salio Mal Intente de nuevo o mas Tarde")
+
+        }
+      );
+
     setinfo({ nombre: '', apellido: '', tel: '', peticion: '' });
   };
   //////// Validacion
@@ -126,7 +146,7 @@ const FormOracion = () => {
       <FormHeader color="blue">PETICIÓN DE ORACIÓN</FormHeader>
       <Container>
         <Flex>
-          <Form onSubmit={send}>
+          <Form ref={form} onSubmit={send}>
             <Input
               placeholder="Nombre"
               type="text"
@@ -185,9 +205,9 @@ const FormOracion = () => {
       <Popup
         show={popup}
         onHide={() => setpopup(false)}
-        titulo="Envio Completado"
+        titulo="Espere un momento..."
       >
-        <h3>Enviado</h3>
+        <h3>{textpopup}</h3>
       </Popup>
     </>
   );

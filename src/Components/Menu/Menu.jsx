@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useHistory } from 'react-router';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -43,6 +44,7 @@ const Button = styled.button`
 `;
 
 const Menu = (props) => {
+  const { push } = useHistory();
   return (
     <Container>
       <Flex color={props.color}>
@@ -52,7 +54,9 @@ const Menu = (props) => {
         <a href="https://palabrafiel.online.church/" rel="noreferrer">
           En vivo
         </a>
-        <a href="#agenda">Nuestra Agenda</a>
+        <a onClick={() => push('/')} href="#agenda">
+          Nuestra Agenda
+        </a>
 
         <Link to="/gruposdecrecimiento">Grupos de Crecimiento</Link>
 

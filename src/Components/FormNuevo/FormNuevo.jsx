@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
-
+import emailjs from 'emailjs-com';
 import Button from '../../utility/Button/Button';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
@@ -50,6 +50,8 @@ const FormNuevo = () => {
 
   const { nombre, apellido, tel, area } = info;
 
+  const form = useRef();
+  const [textpopup, settextpopup] = useState();
   //////// Validacion
   const [start, setStart] = useState(true);
 
@@ -110,6 +112,22 @@ const FormNuevo = () => {
     setStart(true);
     setpopup(true);
 
+    emailjs
+      .sendForm(
+        'service_qtagz2l',
+        'template_xgogu37',
+        e.target,
+        'user_mu1Ke4tCNrIblNSCDFKhw'
+      )
+      .then(
+        (result) => {
+          settextpopup('Fue Enviado Excitosamente');
+        },
+        (error) => {
+          settextpopup('Algo Salio Mal intente despues o mas Tarde');
+        }
+      );
+
     setinfo({ nombre: '', apellido: '', tel: '', area: '' });
   };
   //////// Validacion
@@ -119,7 +137,7 @@ const FormNuevo = () => {
       <FormHeader color="green">soy nuevo</FormHeader>
       <Container>
         <Flex>
-          <Form onSubmit={send}>
+          <Form ref={form} onSubmit={send}>
             <Input
               placeholder="Nombre"
               type="text"
@@ -177,9 +195,9 @@ const FormNuevo = () => {
       <Popup
         show={popup}
         onHide={() => setpopup(false)}
-        titulo="Envio Completado"
+        titulo="Espere un momento..."
       >
-        <h3>Enviado</h3>
+        <h3>{textpopup}</h3>
       </Popup>
     </>
   );
