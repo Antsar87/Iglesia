@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+//////
 import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
+import Button from '../../utility/Button/Button';
+import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
+import { ValidacionTel } from '../Validaciones/ValidacionTel';
+import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
+import Popup from '../../utility/popup/Popup';
+//////
 
 const Container = styled.div`
   max-width: 1200px;
@@ -39,53 +47,146 @@ const FormGrupo = () => {
   const [info, setinfo] = useState({
     nombre: '',
     apellido: '',
-    tipo: '',
+    grupo: '',
     tel: '',
     horario: '',
     dia: '',
   });
 
+  //////// Validacion
+  const [start, setStart] = useState(true);
+  const [popup, setpopup] = useState();
+
+  ///Validaciones States
+  const [VoFNombre, setVoFNombre] = useState('');
+  const [VoFApellido, setVoFApellido] = useState('');
+  const [VoFTelefono, setVoFTelefono] = useState('');
+  const [VoFGrupo, setVoFGrupo] = useState('');
+  const [VoFHorario, setVoFHorario] = useState('');
+  const [VoFDia, setVoFDia] = useState('');
+  ///Validaciones States
+  const { nombre, apellido, tel, horario, dia, grupo } = info;
+  useEffect(() => {
+    
+    if (start === true) {
+      return;
+    } else {
+      //////// Validacion Nombres
+      setVoFNombre(ValidacionNombre(nombre));
+
+      //////// Validacion Apellido
+      setVoFApellido(ValidacionNombre(apellido));
+
+      ////// Validacion Telefono
+      setVoFTelefono(ValidacionTel(tel));
+
+      ///Validacion Grupo
+      setVoFGrupo(ValidacionesOpciones(grupo));
+
+      ///Validacion Horario
+      setVoFHorario(ValidacionesOpciones(horario));
+
+      ///Validacion Dia
+      setVoFDia(ValidacionesOpciones(dia));
+    }
+  }, [info]);
+
+  //////
   const save = (inf) => {
     const { value, name } = inf;
 
     setinfo({ ...info, [name]: value });
   };
+
+  const send = async (e) => {
+    e.preventDefault();
+    
+    ///Validacion Nombre
+    setVoFNombre(ValidacionNombre(nombre));
+
+    ////Validacion Apellido
+    setVoFApellido(ValidacionNombre(apellido));
+
+    ///Validacion Telefono
+    setVoFTelefono(ValidacionTel(tel));
+
+    ///Validacion Grupo
+    setVoFGrupo(ValidacionesOpciones(grupo));
+
+    ///Validacion Horario
+    setVoFHorario(ValidacionesOpciones(horario));
+
+    ///Validacion Dia
+    setVoFDia(ValidacionesOpciones(dia));
+
+    setStart(false);
+
+    ///Validacion De todos
+    if (
+      nombre.trim() === '' ||
+      apellido.trim() === '' ||
+      grupo === '' ||
+      tel === '' ||
+      horario === '' ||
+      dia === '' ||
+      !nombre.match(/^[a-zA-Z]+$/) ||
+      !apellido.match(/^[a-zA-Z]+$/)
+    ) {
+      return;
+    }
+    setStart(true);
+
+    setinfo({ nombre: '', apellido: '', tel: '' });
+    setpopup(true);
+  };
+  //////// Validacion
+
   return (
     <>
       <FormHeader color="yellow">Grupos de Crecimiento</FormHeader>
       <Container>
         <Flex>
-          <Form>
+          <Form onSubmit={send}>
             <Input
               placeholder="Nombre"
               type="text"
               name="nombre"
               Change={save}
+              validation={VoFNombre}
+              value={nombre}
             />
             <Input
               placeholder="Apellido"
               type="text"
               name="apellido"
               Change={save}
+              validation={VoFApellido}
+              value={apellido}
             />
             <Input
               tipo="option"
               Default="Tipo de Grupo"
-              name="tipo"
+              name="grupo"
               valores={[
                 { opciones: 'Matrimonios', id: '1' },
                 { opciones: 'Adultos', id: '2' },
                 { opciones: 'Jóvenes', id: '3' },
                 { opciones: 'Pre-juveniles', id: '4' },
-                { opciones: 'Niños', id: '4' },
+                { opciones: 'Niños', id: '5' },
               ]}
               Change={save}
+              validation={VoFGrupo}
             />
             <Input
               placeholder="Teléfono de contacto"
               type="tel"
               name="tel"
               Change={save}
+              pattern="[0-9]{4}[ -][0-9]{4}"
+              title="A valid phone"
+              validation={VoFTelefono}
+              value={tel}
+              // requireds
             />
             <Input
               tipo="option"
@@ -97,6 +198,7 @@ const FormGrupo = () => {
                 { opciones: 'Noche', id: '3' },
               ]}
               Change={save}
+              validation={VoFHorario}
             />
             <Input
               tipo="option"
@@ -112,7 +214,17 @@ const FormGrupo = () => {
                 { opciones: 'Domingo', id: '7' },
               ]}
               Change={save}
+              validation={VoFDia}
             />
+            <Button
+              color="primary"
+              center="center"
+              width="full"
+              type="submit"
+              style={{ marginTop: '20px', background: '#C3C404' }}
+            >
+              Enviar
+            </Button>
           </Form>
 
           <Footer>
@@ -127,6 +239,13 @@ const FormGrupo = () => {
           </Footer>
         </Flex>
       </Container>
+      <Popup
+        show={popup}
+        onHide={() => setpopup(false)}
+        titulo="Envio Completado"
+      >
+        <h3>Enviado</h3>
+      </Popup>
     </>
   );
 };

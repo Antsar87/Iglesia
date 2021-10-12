@@ -8,7 +8,7 @@ const Buttonv2 = styled.a`
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 20px;
   overflow: hidden;
   transition: 0.2s;
   border: 0.1px solid #2196f3;

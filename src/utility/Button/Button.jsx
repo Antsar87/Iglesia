@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-
 const Button = styled.button`
   cursor: pointer;
   text-transform: uppercase;
@@ -67,7 +66,12 @@ const Button = styled.button`
       font-weight: 700;
       padding: 5px;
     `}
-`;
 
+    ${(props) =>
+    props.width === 'full' &&
+    css`
+      width: 100%;
+    `}
+`;
 
 export default Button;

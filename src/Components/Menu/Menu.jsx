@@ -49,11 +49,7 @@ const Menu = (props) => {
         <Link to="/">Inicio</Link>
         <Link to="/quienesSomos">Quiénes Somos</Link>
 
-        <a
-          href="https://palabrafiel.online.church/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://palabrafiel.online.church/" rel="noreferrer">
           En vivo
         </a>
         <a href="#agenda">Nuestra Agenda</a>
@@ -67,10 +63,7 @@ const Menu = (props) => {
           title="Ministerios"
           menuVariant="dark"
         >
-          <NavDropdown.Item
-            href="https://instituto.ministeriospalabrafiel.org"
-            target="_blank"
-          >
+          <NavDropdown.Item href="https://instituto.ministeriospalabrafiel.org">
             Instituto Bíblico
           </NavDropdown.Item>
         </NavDropdown>

@@ -7,43 +7,122 @@ const Textarea = styled.textarea`
   height: 200px;
   margin-top: 10px;
   border: none;
-  background: white;
   padding: 10px;
-  color: #b1aeae;
+  transition: all 1s ease-in-out;
+  color: ${(props) =>
+    props.validation === true
+      ? 'white'
+      : props.validation === false
+      ? 'white'
+      : '#b1aeae'};
+
+  border: 3px solid
+    ${(props) =>
+      props.validation === true
+        ? '#e64c4c'
+        : props.validation === false
+        ? '#7db846be'
+        : 'transparent'};
+
+  background: ${(props) =>
+    props.validation === true
+      ? '#fa5454e0'
+      : props.validation === false
+      ? '#7cb448bd'
+      : 'white'};
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: ${(props) =>
+      props.validation === true
+        ? 'white'
+        : props.validation === false
+        ? 'white'
+        : '#b1aeae'};
   }
 `;
 const Inputbox = styled.input`
   font-weight: 700;
+  transition: all 1s ease-in-out;
   display: block;
-  background: white;
   width: 100%;
   margin-top: 10px;
   border: none;
   padding: 10px;
-  color: #b1aeae;
+  color: ${(props) =>
+    props.validation === true
+      ? 'white'
+      : props.validation === false
+      ? 'white'
+      : '#b1aeae'};
+
+  border: 3px solid
+    ${(props) =>
+      props.validation === true
+        ? '#e64c4c'
+        : props.validation === false
+        ? '#7db846be'
+        : 'transparent'};
+
+  background: ${(props) =>
+    props.validation === true
+      ? '#fa5454e0'
+      : props.validation === false
+      ? '#7cb448bd'
+      : 'white'};
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: ${(props) =>
+      props.validation === true
+        ? 'white'
+        : props.validation === false
+        ? 'white'
+        : '#b1aeae'};
   }
 `;
 
 const Select = styled.select`
   font-weight: 700;
   display: block;
-  background: white;
   width: 100%;
   margin-top: 10px;
-  border: none;
+  border: 1px solid transparent;
+  transition: all 1s ease-in-out;
   padding: 10px;
-  color: #8f8e8e;
+  color: ${(props) =>
+    props.validation === true
+      ? 'white'
+      : props.validation === false
+      ? 'white'
+      : '#b1aeae'};
+
+  border: 3px solid
+    ${(props) =>
+      props.validation === true
+        ? '#e64c4c'
+        : props.validation === false
+        ? '#7db846be'
+        : 'transparent'};
+
+  background: ${(props) =>
+    props.validation === true
+      ? '#fa5454e0'
+      : props.validation === false
+      ? '#7cb448bd'
+      : 'white'};
   &:focus {
     outline: none;
   }
 `;
 
 const Input = (props) => {
+  console.log(props);
   return (
     <>
       {props.tipo === 'textarea' ? (
@@ -54,6 +133,8 @@ const Input = (props) => {
           type={props.type}
           name={props.name}
           onChange={(e) => props.Change(e.target)}
+          validation={props.validation}
+          {...props}
         />
       ) : ////////////! Textarea
       props.tipo === 'option' ? (
@@ -62,9 +143,11 @@ const Input = (props) => {
           default
           onChange={(e) => props.Change(e.target)}
           defaultValue={'Default'}
+          validation={props.validation}
+          {...props}
         >
           {/* //////////*Opcion Por Default */}
-          <option value={"Default"} disabled hidden>
+          <option value={'Default'} disabled hidden>
             {props.Default}
           </option>
           {/* //////////*Opcion Por Default */}
@@ -78,14 +161,16 @@ const Input = (props) => {
           {/* ////////! Opciones */}
         </Select>
       ) : (
-        ///* Input Normal
-        <Inputbox
-          placeholder={props.placeholder}
-          type={props.type}
-          name={props.name}
-          onChange={(e) => props.Change(e.target)}
-        />
-        ///* Input Normal
+        <>
+          <Inputbox
+            placeholder={props.placeholder}
+            type={props.type}
+            name={props.name}
+            onChange={(e) => props.Change(e.target)}
+            validation={props.validation}
+            {...props}
+          />
+        </> ///* Input Normal
       )}
     </>
   );
