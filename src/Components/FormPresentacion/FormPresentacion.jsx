@@ -111,7 +111,18 @@ const FormPresentacion = () => {
       //Validacion Lider
       setVoFLider(ValidacionNombre(nombrelider));
     }
-  }, [info]);
+  }, [
+    fecha,
+    nombre,
+    edad,
+    nombrepadre,
+    nombremadre,
+    tel,
+    servicio,
+    nombrelider,
+    tiempoasistir,
+    start,
+  ]);
 
   const save = (inf) => {
     const { value, name } = inf;

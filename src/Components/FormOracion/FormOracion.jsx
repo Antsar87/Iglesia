@@ -53,7 +53,7 @@ const FormOracion = () => {
 
   //////// Validacion
   const [start, setStart] = useState(true);
- const [popup, setpopup] = useState()
+  const [popup, setpopup] = useState();
   ///Validaciones States
   const [VoFNombre, setVoFNombre] = useState('');
   const [VoFApellido, setVoFApellido] = useState('');
@@ -77,7 +77,7 @@ const FormOracion = () => {
       /////Validacion Peticion
       setVoFPeticion(ValidacionNombre(peticion));
     }
-  }, [info]);
+  }, [nombre, apellido, tel, peticion, start]);
 
   const save = (inf) => {
     const { value, name } = inf;
@@ -115,7 +115,7 @@ const FormOracion = () => {
       return;
     }
     setStart(true);
-    setpopup(true)
+    setpopup(true);
 
     setinfo({ nombre: '', apellido: '', tel: '', peticion: '' });
   };

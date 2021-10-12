@@ -53,7 +53,7 @@ const FormNuevo = () => {
   //////// Validacion
   const [start, setStart] = useState(true);
 
-  const [popup, setpopup] = useState("")
+  const [popup, setpopup] = useState('');
 
   ///Validaciones States
   const [VoFNombre, setVoFNombre] = useState('');
@@ -74,7 +74,7 @@ const FormNuevo = () => {
       ////// Validacion Telefono
       setVoFTelefono(ValidacionTel(tel));
     }
-  }, [info]);
+  }, [nombre, apellido, tel, start]);
 
   const save = (inf) => {
     const { value, name } = inf;
@@ -108,7 +108,7 @@ const FormNuevo = () => {
       return;
     }
     setStart(true);
-    setpopup(true)
+    setpopup(true);
 
     setinfo({ nombre: '', apellido: '', tel: '', area: '' });
   };

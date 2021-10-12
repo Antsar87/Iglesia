@@ -67,29 +67,32 @@ const FormGrupo = () => {
   ///Validaciones States
   const { nombre, apellido, tel, horario, dia, grupo } = info;
   useEffect(() => {
-    
-    if (start === true) {
-      return;
-    } else {
-      //////// Validacion Nombres
-      setVoFNombre(ValidacionNombre(nombre));
+    const correr = () => {
+      if (start === true) {
+        return;
+      } else {
+        //////// Validacion Nombres
+        setVoFNombre(ValidacionNombre(nombre));
 
-      //////// Validacion Apellido
-      setVoFApellido(ValidacionNombre(apellido));
+        //////// Validacion Apellido
+        setVoFApellido(ValidacionNombre(apellido));
 
-      ////// Validacion Telefono
-      setVoFTelefono(ValidacionTel(tel));
+        ////// Validacion Telefono
+        setVoFTelefono(ValidacionTel(tel));
 
-      ///Validacion Grupo
-      setVoFGrupo(ValidacionesOpciones(grupo));
+        ///Validacion Grupo
+        setVoFGrupo(ValidacionesOpciones(grupo));
 
-      ///Validacion Horario
-      setVoFHorario(ValidacionesOpciones(horario));
+        ///Validacion Horario
+        setVoFHorario(ValidacionesOpciones(horario));
 
-      ///Validacion Dia
-      setVoFDia(ValidacionesOpciones(dia));
-    }
-  }, [info]);
+        ///Validacion Dia
+        setVoFDia(ValidacionesOpciones(dia));
+      }
+    };
+
+    correr();
+  }, [nombre, apellido, tel, horario, dia, grupo, start]);
 
   //////
   const save = (inf) => {
@@ -100,7 +103,7 @@ const FormGrupo = () => {
 
   const send = async (e) => {
     e.preventDefault();
-    
+
     ///Validacion Nombre
     setVoFNombre(ValidacionNombre(nombre));
 
