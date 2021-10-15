@@ -96,7 +96,7 @@ const Agenda = () => {
         <Box>
           <Slider {...settings}>
             {galery.map(({ img, id, link }) => (
-              <Link key={id} to={`Iglesia/${link ? 'presentacion' : ''}`}>
+              <Link key={id} to={`/${link ? 'presentacion' : ''}`}>
                 <Img src={img} />
               </Link>
             ))}

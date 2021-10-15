@@ -55,8 +55,8 @@ const Menu = (props) => {
     <Media>
       <ContainerDesktop className="containerDesktop">
         <Flex color={props.color}>
-          <Link to="Iglesia/">Inicio</Link>
-          <Link to="Iglesia/quienesSomos">Quiénes Somos</Link>
+          <Link to="/">Inicio</Link>
+          <Link to="/quienesSomos">Quiénes Somos</Link>
 
           <a href="https://palabrafiel.online.church/" rel="noreferrer">
             En vivo
@@ -65,9 +65,9 @@ const Menu = (props) => {
             Nuestra Agenda
           </a>
 
-          <Link to="Iglesia/gruposdecrecimiento">Grupos de Crecimiento</Link>
+          <Link to="/gruposdecrecimiento">Grupos de Crecimiento</Link>
 
-          <Link to="Iglesia/soynuevo">Soy Nuevo</Link>
+          <Link to="/soynuevo">Soy Nuevo</Link>
 
           <NavDropdown
             id="nav-dropdown-dark-example"

@@ -77,20 +77,16 @@ function App() {
       </Container>
 
       <Switch>
-        <Route exact path="Iglesia/" component={Home} />
-        <Route exact path="Iglesia/quienesSomos" component={Nosotros} />
-        <Route exact path="Iglesia/soynuevo" component={SoyNuevo} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/quienesSomos" component={Nosotros} />
+        <Route exact path="/soynuevo" component={SoyNuevo} />
+        <Route exact path="/peticiondeoracion" component={PeticionDeOracion} />
         <Route
           exact
-          path="Iglesia/peticiondeoracion"
-          component={PeticionDeOracion}
-        />
-        <Route
-          exact
-          path="Iglesia/gruposdecrecimiento"
+          path="/gruposdecrecimiento"
           component={GruposDeCrecimiento}
         />
-        <Route exact path="Iglesia/presentacion" component={Presentacion} />
+        <Route exact path="/presentacion" component={Presentacion} />
       </Switch>
 
       {/* Footer */}
