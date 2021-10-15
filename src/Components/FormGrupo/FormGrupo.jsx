@@ -159,7 +159,7 @@ const FormGrupo = () => {
     ) {
       return;
     }
-
+    setStart(true);
     // emailjs
     //   .sendForm(
     //     'service_qtagz2l',
