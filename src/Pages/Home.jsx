@@ -34,7 +34,7 @@ const Home = () => {
       <Container>
         {/* Button */}
         <div style={{ textAlign: 'center' }}>
-          <Link to="/peticiondeoracion">
+          <Link to="Iglesia/peticiondeoracion">
             <Button color="primary" center="center">
               PETICIÓN DE ORACIÓN
             </Button>
