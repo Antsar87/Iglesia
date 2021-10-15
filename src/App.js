@@ -87,7 +87,7 @@ function App() {
         />
         <Route
           exact
-          path="/gruposdecrecimiento"
+          path="Iglesia/gruposdecrecimiento"
           component={GruposDeCrecimiento}
         />
         <Route exact path="Iglesia/presentacion" component={Presentacion} />
