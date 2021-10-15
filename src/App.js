@@ -90,7 +90,7 @@ function App() {
           path="/gruposdecrecimiento"
           component={GruposDeCrecimiento}
         />
-        <Route exact path="/presentacion" component={Presentacion} />
+        <Route exact path="Iglesia/presentacion" component={Presentacion} />
       </Switch>
 
       {/* Footer */}
