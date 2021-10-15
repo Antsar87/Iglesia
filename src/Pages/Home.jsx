@@ -11,6 +11,7 @@ import Button from '../utility/Button/Button';
 import Palabra from '../Components/Home/Palabra/Palabra';
 import SobreNosotros from '../Components/Home/SobreNosotros/SobreNosotros';
 import Conectate from '../Components/Home/Conectate/Conectate';
+import NosotrosConectate from '../Components/Nosotros/Conectate/Conectate';
 import Agenda from '../Components/Home/Agenda/Agenda';
 import Grupos from '../Components/Home/Grupos/Grupos';
 import Rotate from 'react-reveal/Rotate';
@@ -35,7 +36,7 @@ const Home = () => {
         <div style={{ textAlign: 'center' }}>
           <Link to="/peticiondeoracion">
             <Button color="primary" center="center">
-              Peticion de Oracion
+              PETICIÓN DE ORACIÓN
             </Button>
           </Link>
         </div>
@@ -53,6 +54,10 @@ const Home = () => {
         {/* Conectate */}
         <Conectate />
         {/* Conectate */}
+
+        {/* Conectate Nostros */}
+        <NosotrosConectate />
+        {/* Conectate Nostros */}
 
         {/* Agenda */}
         <Rotate top left>

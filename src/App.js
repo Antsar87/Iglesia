@@ -1,18 +1,18 @@
-import Home from './Pages/Home.jsx';
-
+import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nosotros from './Pages/Nosotros.jsx';
 import NavIcon from './Components/Nav-Icon/Nav-Icon.jsx';
 import Menu from './Components/Menu/Menu.jsx';
 import styled from 'styled-components';
 import Popup from './utility/popup/Popup.jsx';
-import { useState } from 'react';
+import Home from './Pages/Home.jsx';
 import Footer from './Components/Footer/Footer.jsx';
 import SoyNuevo from './Pages/SoyNuevo.jsx';
 import PeticionDeOracion from './Pages/PeticionDeOracion.jsx';
 import GruposDeCrecimiento from './Pages/GruposDeCrecimiento.jsx';
 import Presentacion from './Pages/Presentacion.jsx';
 import Map from './utility/Map/Map.jsx';
+import Buttonv2 from './utility/Buttonv2/Buttonv2.jsx';
 
 const Container = styled.div`
   overflow: hidden;
@@ -26,22 +26,6 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Button = styled.a`
-  background: #ffdd00;
-  color: black;
-  text-decoration: none;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 90%;
-  transition: all 1s ease-in-out;
-
-  &:hover {
-    color: black;
-    transform: scale(1.1);
-  }
 `;
 
 function App() {
@@ -58,28 +42,29 @@ function App() {
   };
   return (
     <>
-      {mapa === true ? (
-        <>
-          <Popup saving={savemapa}>
-            <Map />
-          </Popup>
-        </>
-      ) : null}
+      <Popup
+        show={coffe}
+        onHide={() => setcoffe(false)}
+        titulo="Puedes Donar Aqui"
+      >
+        <Flex>
+          <Buttonv2 href="https://www.paypal.com/donate/?hosted_button_id=UUE9G75Y9JMPQ">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Para tus Diezmos y Ofrendas presiona aquí
+          </Buttonv2>
+        </Flex>
+      </Popup>
 
-      {coffe === true ? (
-        <>
-          <Popup saving={savecoffe}>
-            <Flex>
-              <Button
-                href="https://www.buymeacoffee.com/Antsar87"
-                target="_blank"
-              >
-                ☕️ Buy me a coffee
-              </Button>
-            </Flex>
-          </Popup>
-        </>
-      ) : null}
+      <Popup
+        show={mapa}
+        onHide={() => setmapa(false)}
+        titulo="Ubicación De la iglesia"
+      >
+        <Map />
+      </Popup>
 
       <Container>
         {/* Nav */}
@@ -105,7 +90,7 @@ function App() {
       </Switch>
 
       {/* Footer */}
-      <Footer ejecutar={savemapa} saving={savecoffe}/>
+      <Footer ejecutar={savemapa} saving={savecoffe} />
       {/* Footer */}
     </>
   );

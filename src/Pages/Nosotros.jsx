@@ -1,5 +1,5 @@
 import React from 'react';
-import Conectate from '../Components/Nosotros/Conectate/Conectate';
+import NosotrosConectate from '../Components/Nosotros/Conectate/Conectate';
 import QuienesSomos from '../Components/Nosotros/QuienesSomos/QuienesSomos';
 import Sumate from '../Components/Nosotros/Sumate/Sumate';
 import Valores from '../Components/Nosotros/Valores/Valores';
@@ -11,7 +11,7 @@ const Nosotros = () => {
       <QuienesSomos />
       <Video />
       <Valores />
-      <Conectate />
+      <NosotrosConectate />
       <Sumate />
     </>
   );

@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
+import { device } from '../../Responsive/Responsive';
 
 const Buttonv2 = styled.a`
   position: relative;
@@ -9,10 +9,15 @@ const Buttonv2 = styled.a`
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 15px;
+  text-align: center;
   overflow: hidden;
   transition: 0.2s;
   border: 0.1px solid #2196f3;
+
+  @media ${device.laptop} {
+    font-size: 20px;
+  }
 
   &:hover {
     color: #255784;

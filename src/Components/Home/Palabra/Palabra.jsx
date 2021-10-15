@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Typed from 'react-typed';
-import videowe from "./video3.webm"
+import videowe from './video3.webm';
+import { device } from '../../../Responsive/Responsive';
 
 const Container = styled.div`
   margin-top: 30px;
   width: 100%;
-  height: 400px;
   position: relative;
+  overflow: hidden;
 `;
 
 const Video = styled.video`
@@ -18,7 +19,7 @@ const Video = styled.video`
 const Flex = styled.div`
   position: absolute;
   top: 0;
-  height: 90%;
+  height: 80%;
   width: 100%;
   padding: 0 20px;
 
@@ -26,14 +27,37 @@ const Flex = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
+  @media ${device.tablet} {
+    height: 90%;
+  }
 `;
 
 const Box = styled.div`
   text-align: center;
 
   & span {
-    color: white;
-    font-size: 30px;
+    color: #ce8921;
+    font-size: 13px;
+  }
+
+  @media ${device.mobileM} {
+    & span {
+      font-size: 15px;
+      color: white;
+    }
+  }
+
+  @media ${device.tablet} {
+    & span {
+      font-size: 20px;
+    }
+  }
+
+  @media ${device.laptop} {
+    & span {
+      font-size: 30px;
+    }
   }
 `;
 

@@ -5,6 +5,7 @@ import Instagram from './Elementos-21.png';
 import Youtube from './Elementos-22.png';
 import Ticktock from './Elementos-23.png';
 import Fade from 'react-reveal/Fade';
+import { device } from '../../../Responsive/Responsive';
 
 const Background = styled.div`
   background: #0c59b5;
@@ -22,8 +23,13 @@ const Box = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 40px;
+  font-size: 20px;
   text-transform: uppercase;
+  text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 40px;
+  }
 `;
 
 const BoxIcon = styled.div`
@@ -36,7 +42,7 @@ const Logo = styled.img`
   height: 30px;
 `;
 
-const Conectate = () => {
+const NosotrosConectate = () => {
   const info = [
     {
       link: 'https://www.facebook.com/ministeriospalabrafiel',
@@ -65,7 +71,7 @@ const Conectate = () => {
         <Container>
           <Box>
             <Fade bottom delay={1000}>
-              <Title>conectate con nosotros </Title>
+              <Title>CONÉCTATE CON NOSOTROS </Title>
               <BoxIcon>
                 {info.map(({ id, img, link }) => (
                   <a target="_blank" href={link} rel="noreferrer">
@@ -81,4 +87,4 @@ const Conectate = () => {
   );
 };
 
-export default Conectate;
+export default NosotrosConectate;

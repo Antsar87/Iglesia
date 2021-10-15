@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+import { device } from '../../../Responsive/Responsive';
 
 const Container = styled.div`
   max-width: 1200px;
-  margin: 30px auto 0 auto;
+  margin: 50px auto 40px auto;
+
+  @media ${device.tablet} {
+    margin: 30px auto 0 auto;
+  }
 `;
 
 const Box = styled.div`
@@ -17,13 +22,16 @@ const Box = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: 10px;
-  row-gap: 20px;
+  /* row-gap: 20px; */
 
-  .box-child-last {
-    grid-column: 1 / 3;
-  
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+
+    .box-child-last {
+      grid-column: 1 / 3;
+    }
   }
 `;
 
@@ -32,13 +40,23 @@ const BoxText = styled.div`
 
   & h3 {
     color: #ffa600ec;
-    font-size: 40px;
+    font-size: 20px;
     font-family: Avenir2;
+
+    @media ${device.tablet} {
+      font-size: 40px;
+    }
   }
 
   & p {
-    line-height: 30px;
+    /* line-height: 25px; */
     color: #706f6f;
+    font-size: 14px;
+
+    @media ${device.tablet} {
+      line-height: 30px;
+      font-size: 16px;
+    }
   }
 `;
 const Valores = () => {
@@ -48,7 +66,7 @@ const Valores = () => {
         <Grid>
           <BoxText className="box-child-first">
             <Fade top>
-              <h3>Vision</h3>
+              <h3>Visión</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
@@ -61,7 +79,7 @@ const Valores = () => {
           </BoxText>
           <BoxText className="box-child-center">
             <Fade top>
-              <h3>Mision</h3>
+              <h3>Misión</h3>
             </Fade>
             <Fade bottom delay={1100}>
               <p>
@@ -80,7 +98,7 @@ const Valores = () => {
               <p>
                 {' '}
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt
-                expedita sint animi amet <br/> ab magnam reprehenderit!
+                expedita sint animi amet <br /> ab magnam reprehenderit!
                 Dignissimos nisi adipisci fuga?
               </p>
             </Fade>

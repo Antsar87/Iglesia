@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { device } from '../../../Responsive/Responsive';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
@@ -23,13 +23,24 @@ const Box = styled.div`
   & h3 {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 20px;
     font-family: Avenir2;
+
+    @media ${device.tablet} {
+      font-size: 40px;
+    }
   }
 
-  & p:not(:last-child) {
-    margin-bottom: 10px;
-    
+  & p {
+    font-size: 14px;
+
+    & :not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    @media ${device.tablet} {
+      font-size: 16px;
+    }
   }
 `;
 
