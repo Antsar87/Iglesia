@@ -10,3 +10,11 @@ export const ValidacionNombre = (props) => {
 
   return false;
 };
+
+export const ValidacionNombreCompleto = (props) => {
+  if (!props.match(/^[A-Za-z\s]+$/)) {
+    return true;
+  }
+
+  return false;
+};

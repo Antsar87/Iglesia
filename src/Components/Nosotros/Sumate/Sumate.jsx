@@ -4,6 +4,7 @@ import Button from '../../../utility/Button/Button';
 import back from './Elementos-26.jpg';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
+import { device } from '../../../Responsive/Responsive';
 
 const Background = styled.div`
   background: url(${back}) no-repeat;
@@ -48,7 +49,20 @@ const Flex = styled.div`
 const Title = styled.h2`
   color: white;
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 16px;
+  text-align: center;
+
+  @media ${device.mobileM} {
+    font-size: 20px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 30px;
+  }
+
+  @media ${device.laptop} {
+    font-size: 50px;
+  }
 `;
 
 const Sumate = () => {

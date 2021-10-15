@@ -85,6 +85,7 @@ const Inputbox = styled.input`
         ? 'white'
         : '#b1aeae'};
   }
+  
 `;
 
 const Select = styled.select`
@@ -122,7 +123,6 @@ const Select = styled.select`
 `;
 
 const Input = (props) => {
-  console.log(props);
   return (
     <>
       {props.tipo === 'textarea' ? (

@@ -9,7 +9,9 @@ import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionBox } from '../Validaciones/ValidacionBox';
 import Popup from '../../utility/popup/Popup';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
+import axios from 'axios';
+import { device } from '../../Responsive/Responsive';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -25,7 +27,11 @@ const Flex = styled.div`
 `;
 
 const Form = styled.form`
-  width: 40%;
+  width: 100%;
+
+  @media ${device.tablet} {
+    width: 40%;
+  }
 `;
 
 const Footer = styled.div`
@@ -33,12 +39,28 @@ const Footer = styled.div`
   margin-top: 20px;
   width: 100%;
 
-  & p:first-child {
-    letter-spacing: 4px !important;
-  }
+  & p {
+    font-size: 13px;
 
-  & p:last-child {
-    letter-spacing: 3px;
+    @media ${device.tablet} {
+      font-size: 16px;
+    }
+
+    &:first-child {
+      letter-spacing: 1px !important;
+
+      @media ${device.tablet} {
+        letter-spacing: 4px !important;
+      }
+    }
+
+    &:last-child {
+      letter-spacing: 1px;
+
+      @media ${device.tablet} {
+        letter-spacing: 3px !important;
+      }
+    }
   }
 `;
 
@@ -46,11 +68,11 @@ const FormOracion = () => {
   const [info, setinfo] = useState({
     nombre: '',
     apellido: '',
-    tel: '',
+    telefonoContacto: '',
     peticion: '',
   });
 
-  const { nombre, apellido, tel, peticion } = info;
+  const { nombre, apellido, telefonoContacto, peticion } = info;
 
   //////// Validacion
   const [start, setStart] = useState(true);
@@ -76,18 +98,17 @@ const FormOracion = () => {
       setVoFApellido(ValidacionNombre(apellido));
 
       ////// Validacion Telefono
-      setVoFTelefono(ValidacionTel(tel));
+      setVoFTelefono(ValidacionTel(telefonoContacto));
 
       /////Validacion Peticion
       setVoFPeticion(ValidacionNombre(peticion));
     }
-  }, [nombre, apellido, tel, peticion, start]);
+  }, [nombre, apellido, telefonoContacto, peticion, start]);
 
   const save = (inf) => {
     const { value, name } = inf;
 
     setinfo({ ...info, [name]: value });
-    console.log(info);
   };
 
   const send = async (e) => {
@@ -100,7 +121,7 @@ const FormOracion = () => {
     setVoFApellido(ValidacionNombre(apellido));
 
     ///Validacion Telefono
-    setVoFTelefono(ValidacionTel(tel));
+    setVoFTelefono(ValidacionTel(telefonoContacto));
 
     ////Validacion Box
     setVoFPeticion(ValidacionBox(peticion));
@@ -110,8 +131,9 @@ const FormOracion = () => {
     if (
       nombre.trim() === '' ||
       apellido.trim() === '' ||
-      tel === '' ||
+      telefonoContacto === '' ||
       peticion === '' ||
+      !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
       !nombre.match(/^[a-zA-Z]+$/) ||
       !apellido.match(/^[a-zA-Z]+$/)
     ) {
@@ -120,24 +142,36 @@ const FormOracion = () => {
     setStart(true);
     setpopup(true);
 
-    emailjs
-      .sendForm(
-        'service_qtagz2l',
-        'template_xgogu37',
-        e.target,
-        'user_mu1Ke4tCNrIblNSCDFKhw'
-      )
-      .then(
-        (result) => {
-          settextpopup("Fue Enviado Excitosamente")
-        },
-        (error) => {
-          settextpopup("Algo Salio Mal Intente de nuevo o mas Tarde")
+    // emailjs
+    //   .sendForm(
+    //     'service_qtagz2l',
+    //     'template_xgogu37',
+    //     e.target,
+    //     'user_mu1Ke4tCNrIblNSCDFKhw'
+    //   )
+    //   .then(
+    //     (result) => {
+    //       settextpopup("Fue Enviado Exitosamente")
+    //     },
+    //     (error) => {
+    //       settextpopup("Algo Salio Mal Intente de nuevo o mas Tarde")
 
-        }
-      );
+    //     }
+    //   );
 
-    setinfo({ nombre: '', apellido: '', tel: '', peticion: '' });
+    axios
+      .post(`https://node-express-mon.herokuapp.com/api/peticionOracion`, {
+        nombre,
+        apellido,
+        telefonoContacto,
+        peticion,
+      })
+      .then((res) => {
+        console.log(res);
+        settextpopup(res.data)
+      });
+
+    setinfo({ nombre: '', apellido: '', telefonoContacto: '', peticion: '' });
   };
   //////// Validacion
 
@@ -166,10 +200,10 @@ const FormOracion = () => {
             <Input
               placeholder="Teléfono de contacto"
               type="tel"
-              name="tel"
+              name="telefonoContacto"
               Change={save}
               validation={VoFTelefono}
-              value={tel}
+              value={telefonoContacto}
             />
             <Input
               tipo="textarea"
@@ -206,6 +240,7 @@ const FormOracion = () => {
         show={popup}
         onHide={() => setpopup(false)}
         titulo="Espere un momento..."
+        reload={true}
       >
         <h3>{textpopup}</h3>
       </Popup>

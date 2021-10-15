@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
+import axios from 'axios';
 import Button from '../../utility/Button/Button';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import Popup from '../../utility/popup/Popup';
+import { device } from '../../Responsive/Responsive';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -23,7 +25,11 @@ const Flex = styled.div`
 `;
 
 const Form = styled.form`
-  width: 40%;
+  width: 100%;
+
+  @media ${device.tablet} {
+    width: 40%;
+  }
 `;
 
 const Footer = styled.div`
@@ -31,12 +37,28 @@ const Footer = styled.div`
   margin-top: 20px;
   width: 100%;
 
-  & p:first-child {
-    letter-spacing: 4px !important;
-  }
+  & p {
+    font-size: 13px;
 
-  & p:last-child {
-    letter-spacing: 3px;
+    @media ${device.tablet} {
+      font-size: 16px;
+    }
+
+    &:first-child {
+      letter-spacing: 1px !important;
+
+      @media ${device.tablet} {
+        letter-spacing: 4px !important;
+      }
+    }
+
+    &:last-child {
+      letter-spacing: 1px;
+
+      @media ${device.tablet} {
+        letter-spacing: 3px !important;
+      }
+    }
   }
 `;
 
@@ -44,11 +66,11 @@ const FormNuevo = () => {
   const [info, setinfo] = useState({
     nombre: '',
     apellido: '',
-    tel: '',
-    area: '',
+    telefono: '',
+    mensaje: '',
   });
 
-  const { nombre, apellido, tel, area } = info;
+  const { nombre, apellido, telefono, mensaje } = info;
 
   const form = useRef();
   const [textpopup, settextpopup] = useState();
@@ -74,15 +96,14 @@ const FormNuevo = () => {
       setVoFApellido(ValidacionNombre(apellido));
 
       ////// Validacion Telefono
-      setVoFTelefono(ValidacionTel(tel));
+      setVoFTelefono(ValidacionTel(telefono));
     }
-  }, [nombre, apellido, tel, start]);
+  }, [nombre, apellido, telefono, start]);
 
   const save = (inf) => {
     const { value, name } = inf;
 
     setinfo({ ...info, [name]: value });
-    console.log(info);
   };
 
   const send = async (e) => {
@@ -95,7 +116,7 @@ const FormNuevo = () => {
     setVoFApellido(ValidacionNombre(apellido));
 
     ///Validacion Telefono
-    setVoFTelefono(ValidacionTel(tel));
+    setVoFTelefono(ValidacionTel(telefono));
 
     setStart(false);
 
@@ -103,8 +124,9 @@ const FormNuevo = () => {
     if (
       nombre.trim() === '' ||
       apellido.trim() === '' ||
-      tel === '' ||
+      telefono === '' ||
       !nombre.match(/^[a-zA-Z]+$/) ||
+      !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
       !apellido.match(/^[a-zA-Z]+$/)
     ) {
       return;
@@ -112,21 +134,33 @@ const FormNuevo = () => {
     setStart(true);
     setpopup(true);
 
-    emailjs
-      .sendForm(
-        'service_qtagz2l',
-        'template_xgogu37',
-        e.target,
-        'user_mu1Ke4tCNrIblNSCDFKhw'
-      )
-      .then(
-        (result) => {
-          settextpopup('Fue Enviado Excitosamente');
-        },
-        (error) => {
-          settextpopup('Algo Salio Mal intente despues o mas Tarde');
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     'service_qtagz2l',
+    //     'template_xgogu37',
+    //     e.target,
+    //     'user_mu1Ke4tCNrIblNSCDFKhw'
+    //   )
+    //   .then(
+    //     (result) => {
+    //       settextpopup('Fue Enviado Exitosamente');
+    //     },
+    //     (error) => {
+    //       settextpopup('Algo Salio Mal intente despues o mas Tarde');
+    //     }
+    //   );
+
+    axios
+      .post(`https://node-express-mon.herokuapp.com/api/soyNuevo`, {
+        nombre,
+        apellido,
+        telefono,
+        mensaje,
+      })
+      .then((res) => {
+        console.log(res);
+        settextpopup(res.data)
+      });
 
     setinfo({ nombre: '', apellido: '', tel: '', area: '' });
   };
@@ -157,17 +191,17 @@ const FormNuevo = () => {
             <Input
               placeholder="Teléfono de contacto"
               type="tel"
-              name="tel"
+              name="telefono"
               Change={save}
               validation={VoFTelefono}
-              value={tel}
+              value={telefono}
             />
             <Input
               tipo="textarea"
-              name="area"
+              name="mensaje"
               placeholder="Mensaje/Pregunta:"
               Change={save}
-              value={area}
+              value={mensaje}
             />
             <Button
               color="primary"
@@ -196,6 +230,7 @@ const FormNuevo = () => {
         show={popup}
         onHide={() => setpopup(false)}
         titulo="Espere un momento..."
+        reload={true}
       >
         <h3>{textpopup}</h3>
       </Popup>

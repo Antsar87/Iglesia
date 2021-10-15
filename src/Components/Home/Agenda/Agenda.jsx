@@ -12,6 +12,7 @@ import img5 from './presentacion.jpg';
 import Fade from 'react-reveal/Fade';
 
 import Slider from 'react-slick';
+import { device } from '../../../Responsive/Responsive';
 
 const Container = styled.div`
   margin-top: 30px;
@@ -23,8 +24,12 @@ const Container = styled.div`
   & h2 {
     text-transform: uppercase;
     color: #5aa3e7;
-    font-size: 40px;
+    font-size: 25px;
     font-family: Avenir2;
+
+    @media ${device.mobileL} {
+      font-size: 40px;
+    }
   }
 `;
 
@@ -60,8 +65,27 @@ const Agenda = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

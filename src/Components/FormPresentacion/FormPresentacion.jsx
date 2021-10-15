@@ -4,12 +4,16 @@ import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
 import Button from '../../utility/Button/Button';
-
-import emailjs from 'emailjs-com';
-import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
+import axios from 'axios';
+// import emailjs from 'emailjs-com';
+import {
+  ValidacionNombre,
+  ValidacionNombreCompleto,
+} from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
 import Popup from '../../utility/popup/Popup';
+import { device } from '../../Responsive/Responsive';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -25,7 +29,11 @@ const Flex = styled.div`
 `;
 
 const Form = styled.form`
-  width: 40%;
+  width: 100%;
+
+  @media ${device.tablet} {
+    width: 40%;
+  }
 `;
 
 const Footer = styled.div`
@@ -33,40 +41,48 @@ const Footer = styled.div`
   margin-top: 20px;
   width: 100%;
 
-  & p:first-child {
-    letter-spacing: 4px !important;
-  }
+  & p {
+    font-size: 13px;
 
-  & p:last-child {
-    letter-spacing: 3px;
+    @media ${device.tablet} {
+      font-size: 16px;
+    }
+
+    &:last-child {
+      letter-spacing: 1px;
+
+      @media ${device.tablet} {
+        letter-spacing: 3px !important;
+      }
+    }
   }
 `;
 
 const FormPresentacion = () => {
   const [info, setinfo] = useState({
     fecha: '',
-    nombre: '',
-    edad: '',
-    nombrepadre: '',
-    nombremadre: '',
-    tel: '',
-    servicio: '',
-    nombrelider: '',
-    tiempoasistir: '',
+    nombreNino: '',
+    edadNino: '',
+    nombrePadre: '',
+    nombreMadre: '',
+    telefono: '',
+    servicioAsistir: '',
+    nombreLider: '',
+    tiempoAsistir: '',
   });
 
   const form = useRef();
 
   const {
     fecha,
-    nombre,
-    edad,
-    nombrepadre,
-    nombremadre,
-    tel,
-    servicio,
-    nombrelider,
-    tiempoasistir,
+    nombreNino,
+    edadNino,
+    nombrePadre,
+    nombreMadre,
+    telefono,
+    servicioAsistir,
+    nombreLider,
+    tiempoAsistir,
   } = info;
 
   //////// Validacion
@@ -83,7 +99,7 @@ const FormPresentacion = () => {
   const [VoFLider, setVoFLider] = useState('');
   const [VoFAsistir, setVoFAsistir] = useState('');
   const [popup, setpopup] = useState('');
-  const [textpopup, settextpopup] = useState("")
+  const [textpopup, settextpopup] = useState('');
   ///Validaciones States
 
   useEffect(() => {
@@ -91,40 +107,40 @@ const FormPresentacion = () => {
       return;
     } else {
       //////// Validacion Nombres
-      setVoFnNombre(ValidacionNombre(nombre));
+      setVoFnNombre(ValidacionNombreCompleto(nombreNino));
 
       ////// Validacion Telefono
-      setVoFTel(ValidacionTel(tel));
+      setVoFTel(ValidacionTel(telefono));
 
       /////Validacion padre
-      setVoFPadre(ValidacionNombre(nombrepadre));
+      setVoFPadre(ValidacionNombre(nombrePadre));
 
-      setVoFMadre(ValidacionNombre(nombremadre));
+      setVoFMadre(ValidacionNombre(nombreMadre));
       ////Validacion Servicio
-      setVoFServicio(ValidacionesOpciones(servicio));
+      setVoFServicio(ValidacionesOpciones(servicioAsistir));
 
       ///Validacion Edad
-      setVoFEdad(ValidacionesOpciones(edad));
+      setVoFEdad(ValidacionesOpciones(edadNino));
 
       ///Validacion Fecha
       setVoFFecha(ValidacionesOpciones(fecha));
 
       //Validacion Asistir
-      setVoFAsistir(ValidacionNombre(tiempoasistir));
+      setVoFAsistir(ValidacionNombre(tiempoAsistir));
 
       //Validacion Lider
-      setVoFLider(ValidacionNombre(nombrelider));
+      setVoFLider(ValidacionNombre(nombreLider));
     }
   }, [
     fecha,
-    nombre,
-    edad,
-    nombrepadre,
-    nombremadre,
-    tel,
-    servicio,
-    nombrelider,
-    tiempoasistir,
+    nombreNino,
+    edadNino,
+    nombrePadre,
+    nombreMadre,
+    telefono,
+    servicioAsistir,
+    nombreLider,
+    tiempoAsistir,
     start,
   ]);
 
@@ -132,51 +148,50 @@ const FormPresentacion = () => {
     const { value, name } = inf;
 
     setinfo({ ...info, [name]: value });
-    console.log(info);
   };
 
   const send = async (e) => {
     e.preventDefault();
 
     //////// Validacion Nombres
-    setVoFnNombre(ValidacionNombre(nombre));
+    setVoFnNombre(ValidacionNombreCompleto(nombreNino));
 
     ////// Validacion Telefono
-    setVoFTel(ValidacionTel(tel));
+    setVoFTel(ValidacionTel(telefono));
 
     /////Validacion Peticion
-    setVoFPadre(ValidacionNombre(nombrepadre));
+    setVoFPadre(ValidacionNombre(nombrePadre));
 
     ////Validacion Servicio
-    setVoFServicio(ValidacionesOpciones(servicio));
+    setVoFServicio(ValidacionesOpciones(servicioAsistir));
 
     ///Validacion Edad
-    setVoFEdad(ValidacionesOpciones(edad));
+    setVoFEdad(ValidacionesOpciones(edadNino));
 
     ///Validacion Fecha
     setVoFFecha(ValidacionesOpciones(fecha));
 
     //Validacion Asistir
-    setVoFAsistir(ValidacionNombre(tiempoasistir));
+    setVoFAsistir(ValidacionNombre(tiempoAsistir));
 
     //Validacion Lider
-    setVoFLider(ValidacionNombre(nombrelider));
+    setVoFLider(ValidacionNombre(nombreLider));
 
-    setVoFMadre(ValidacionNombre(nombremadre));
+    setVoFMadre(ValidacionNombre(nombreMadre));
 
     setStart(false);
 
     ///Validacion De todos
     if (
-      nombre.trim() === '' ||
-      edad.trim() === '' ||
-      tel === '' ||
+      edadNino.trim() === '' ||
+      telefono === '' ||
       fecha === '' ||
-      nombrelider === '' ||
-      nombrepadre === '' ||
-      nombremadre === '' ||
-      tiempoasistir === '' ||
-      !nombre.match(/^[a-zA-Z]+$/)
+      nombreLider === '' ||
+      nombrePadre === '' ||
+      nombreMadre === '' ||
+      tiempoAsistir === '' ||
+      !nombreNino.match(/^[a-zA-Z]+$/) ||
+      !telefono.match('[0-9]{4}[ -][0-9]{4}')
     ) {
       return;
     }
@@ -184,33 +199,49 @@ const FormPresentacion = () => {
     setStart(true);
     setpopup(true);
 
-    emailjs
-      .sendForm(
-        'service_qtagz2l',
-        'template_vil954u',
-        e.target,
-        'user_mu1Ke4tCNrIblNSCDFKhw'
-      )
-      .then(
-        (result) => {
-          settextpopup("Fue Enviado Excitosamente")
-        },
-        (error) => {
-          settextpopup("Salio Algo Mal Intente de nuevo o mas Tarde")
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     'service_qtagz2l',
+    //     'template_vil954u',
+    //     e.target,
+    //     'user_mu1Ke4tCNrIblNSCDFKhw'
+    //   )
+    //   .then(
+    //     (result) => {
+    //       settextpopup('Fue Enviado Excitosamente');
+    //     },
+    //     (error) => {
+    //       settextpopup('Salio Algo Mal Intente de nuevo o mas Tarde');
+    //     }
+    //   );
+
+    axios
+      .post(`https://node-express-mon.herokuapp.com/email/presentacionNinos`, {
+        fecha,
+        nombreNino,
+        edadNino,
+        nombrePadre,
+        nombreMadre,
+        telefono,
+        servicioAsistir,
+        nombreLider,
+        tiempoAsistir,
+      })
+      .then((res) => {
+        console.log(res);
+        settextpopup(res.data);
+      });
 
     setinfo({
-      nombre: '',
-      apellido: '',
-      tel: '',
-      nombrelider: '',
-      nombremadre: '',
-      nombrepadre: '',
+      nombreNino: '',
+      telefono: '',
+      nombreLider: '',
+      nombreMadre: '',
+      nombrePadre: '',
       fecha: '',
-      servicio: '',
-      tiempoasistir: '',
-      edad: '',
+      servicioAsistir: '',
+      tiempoAsistir: '',
+      edadNino: '',
     });
   };
   return (
@@ -230,43 +261,43 @@ const FormPresentacion = () => {
             <Input
               placeholder="Nombre completo del niño (a)"
               type="text"
-              name="nombre"
+              name="nombreNino"
               Change={save}
               validation={VoFNombre}
-              value={nombre}
+              value={nombreNino}
             />
             <Input
               placeholder="Edad del niño"
               type="number"
-              name="edad"
+              name="edadNino"
               min="1"
               Change={save}
               validation={VoFEdad}
-              value={edad}
+              value={edadNino}
             />
             <Input
               placeholder="Nombre del padre"
               type="text"
-              name="nombrepadre"
+              name="nombrePadre"
               Change={save}
               validation={VoFPadre}
-              value={nombrepadre}
+              value={nombrePadre}
             />
             <Input
               placeholder="Nombre de la Madre"
               type="text"
-              name="nombremadre"
+              name="nombreMadre"
               Change={save}
               validation={VoFMadre}
-              value={nombremadre}
+              value={nombreMadre}
             />
             <Input
               placeholder="No. teléfono"
               type="tel"
-              name="tel"
+              name="telefono"
               Change={save}
               validation={VoFTel}
-              value={tel}
+              value={telefono}
             />
             <Input
               Default="Servicio al que asiste dia domingo"
@@ -276,25 +307,25 @@ const FormPresentacion = () => {
               ]}
               type="text"
               tipo="option"
-              name="servicio"
+              name="servicioAsistir"
               Change={save}
               validation={VoFServicio}
             />
             <Input
               placeholder="Nombre de Líder"
               type="text"
-              name="nombrelider"
+              name="nombreLider"
               Change={save}
               validation={VoFLider}
-              value={nombrelider}
+              value={nombreLider}
             />
             <Input
               placeholder="Tiempo de asistir a la iglesia"
               type="text"
-              name="tiempoasistir"
+              name="tiempoAsistir"
               Change={save}
               validation={VoFAsistir}
-              value={tiempoasistir}
+              value={tiempoAsistir}
             />
 
             <Button
@@ -321,6 +352,7 @@ const FormPresentacion = () => {
         show={popup}
         onHide={() => setpopup(false)}
         titulo="Espere un momento..."
+        reload={true}
       >
         <h3>{textpopup}</h3>
       </Popup>

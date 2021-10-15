@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { device } from '../../Responsive/Responsive';
 
 const Button = styled.button`
   cursor: pointer;
@@ -62,9 +63,20 @@ const Button = styled.button`
   ${(props) =>
     props.size === 'big' &&
     css`
-      font-size: 40px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 400;
       padding: 5px;
+
+      @media ${device.mobileS} {
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      @media ${device.tablet} {
+        font-size: 40px;
+        font-weight: 700;
+        padding: 5px;
+      }
     `}
 
     ${(props) =>

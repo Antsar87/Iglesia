@@ -4,6 +4,7 @@ import Button from '../../../utility/Button/Button';
 import Logo from './bible-study.jpg';
 import { Link } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
+import { device } from '../../../Responsive/Responsive';
 
 const Container = styled.div`
   margin-top: 30px;
@@ -11,13 +12,18 @@ const Container = styled.div`
   background: url(${Logo}) center;
   width: 100%;
   height: 370px;
-  padding: 20px;
   background-position: center;
   background-size: cover;
   min-height: 300px;
   position: relative;
   z-index: 1;
-  text-align: justify;
+  text-align: center;
+  padding-top: 8px;
+
+  @media ${device.mobileL} {
+    padding: 20px;
+    text-align: justify;
+  }
 
   &::after {
     content: '';
@@ -38,13 +44,38 @@ const Container = styled.div`
   & h2 {
     color: white;
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 20px;
     font-family: Avenir2;
+
+    & span {
+      display: inline;
+    }
+
+    @media ${device.mobileM} {
+      font-size: 25px;
+
+      & span {
+        display: block;
+      }
+    }
+
+    @media ${device.tablet} {
+      font-size: 30px;
+    }
   }
 
   & p {
     color: #eeeeee;
-    width: 50%;
+    width: 100%;
+    font-size: 15px;
+
+    @media ${device.tablet} {
+      width: 70%;
+    }
+
+    @media ${device.laptop} {
+      width: 50%;
+    }
 
     & span {
       font-weight: 700;
@@ -58,10 +89,6 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
-  a {
-    display: inline;
-  }
 `;
 
 const Grupos = () => {
@@ -70,7 +97,7 @@ const Grupos = () => {
       <Fade bottom delay={1100}>
         <Flex>
           <h2>
-            grupos de <br /> crecimiento
+            <span>grupos de</span> crecimiento
           </h2>
 
           <p>
@@ -82,8 +109,8 @@ const Grupos = () => {
             <span> Hebreos 10:24-25 (TLA)</span>
           </p>
           <p>
-            <br /> Si aún no cuentas con un grupo de crecimiento, únete a uno
-            llenando tu información haciendo clic en el botón.
+            Si aún no cuentas con un grupo de crecimiento, únete a uno llenando
+            tu información haciendo clic en el botón.
           </p>
 
           <div>

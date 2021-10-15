@@ -6,21 +6,31 @@ import Instagram from './Instagram.png';
 import Ticktock from './Ticktock.png';
 import Youtube from './Youtube.png';
 import { Link } from 'react-router-dom';
+import { device } from '../../Responsive/Responsive';
 
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  padding: 0 30px;
 `;
 
 const Img = styled.img`
   height: 50px;
   width: 100px;
+
+  @media ${device.mobileM} {
+    height: 50px;
+  }
 `;
 
 const Icon = styled.img`
-  height: 30px;
+  height: 20px;
+
+  @media ${device.mobileM} {
+    height: 30px;
+  }
 `;
 
 const NavIcon = () => {
