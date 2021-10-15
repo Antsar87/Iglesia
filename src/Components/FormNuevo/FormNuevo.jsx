@@ -189,7 +189,7 @@ const FormNuevo = () => {
               value={apellido}
             />
             <Input
-              placeholder="Teléfono de contacto"
+              placeholder="Teléfono de contacto (XXXX-XXXX)"
               type="tel"
               name="telefono"
               Change={save}

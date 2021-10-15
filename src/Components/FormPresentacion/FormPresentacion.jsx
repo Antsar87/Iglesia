@@ -292,7 +292,7 @@ const FormPresentacion = () => {
               value={nombreMadre}
             />
             <Input
-              placeholder="No. teléfono"
+              placeholder="No. teléfono (XXXX-XXXX)"
               type="tel"
               name="telefono"
               Change={save}

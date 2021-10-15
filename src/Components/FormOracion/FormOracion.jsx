@@ -198,7 +198,7 @@ const FormOracion = () => {
               value={apellido}
             />
             <Input
-              placeholder="Teléfono de contacto"
+              placeholder="Teléfono de contacto (XXXX-XXXX)"
               type="tel"
               name="telefonoContacto"
               Change={save}

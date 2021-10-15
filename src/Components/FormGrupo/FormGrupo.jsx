@@ -186,7 +186,7 @@ const FormGrupo = () => {
       })
       .then((res) => {
         console.log(res);
-        settextpopup(res.data)
+        settextpopup(res.data);
       });
     setinfo({ nombre: '', apellido: '', telefonoContacto: '' });
     setpopup(true);
@@ -230,7 +230,7 @@ const FormGrupo = () => {
               validation={VoFGrupo}
             />
             <Input
-              placeholder="Teléfono de contacto"
+              placeholder="Teléfono de contacto (XXXX-XXXX)"
               type="tel"
               name="telefonoContacto"
               Change={save}
