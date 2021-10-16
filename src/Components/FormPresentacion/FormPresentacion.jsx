@@ -14,6 +14,8 @@ import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
 import Popup from '../../utility/popup/Popup';
 import { device } from '../../Responsive/Responsive';
+import { ValidacionFecha } from '../Validaciones/ValidacionFecha';
+import { ValidacionEdad } from '../Validaciones/ValidacionEdad';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -89,15 +91,15 @@ const FormPresentacion = () => {
   const [start, setStart] = useState(true);
 
   ///Validaciones States
-  const [VoFFecha, setVoFFecha] = useState('');
-  const [VoFNombre, setVoFnNombre] = useState('');
-  const [VoFEdad, setVoFEdad] = useState('');
-  const [VoFPadre, setVoFPadre] = useState('');
-  const [VoFMadre, setVoFMadre] = useState('');
-  const [VoFTel, setVoFTel] = useState('');
-  const [VoFServicio, setVoFServicio] = useState('');
-  const [VoFLider, setVoFLider] = useState('');
-  const [VoFAsistir, setVoFAsistir] = useState('');
+  const [VoFFecha, setVoFFecha] = useState({ VoF: '', error: '' });
+  const [VoFNombre, setVoFnNombre] = useState({ VoF: '', error: '' });
+  const [VoFEdad, setVoFEdad] = useState({ VoF: '', error: '' });
+  const [VoFPadre, setVoFPadre] = useState({ VoF: '', error: '' });
+  const [VoFMadre, setVoFMadre] = useState({ VoF: '', error: '' });
+  const [VoFTel, setVoFTel] = useState({ VoF: '', error: '' });
+  const [VoFServicio, setVoFServicio] = useState({ VoF: '', error: '' });
+  const [VoFLider, setVoFLider] = useState({ VoF: '', error: '' });
+  const [VoFAsistir, setVoFAsistir] = useState({ VoF: '', error: '' });
   const [popup, setpopup] = useState('');
   const [textpopup, settextpopup] = useState('');
   ///Validaciones States
@@ -107,7 +109,7 @@ const FormPresentacion = () => {
       return;
     } else {
       //////// Validacion Nombres
-      setVoFnNombre(ValidacionNombreCompleto(nombreNino));
+      setVoFnNombre(ValidacionNombre(nombreNino));
 
       ////// Validacion Telefono
       setVoFTel(ValidacionTel(telefono));
@@ -120,10 +122,10 @@ const FormPresentacion = () => {
       setVoFServicio(ValidacionesOpciones(servicioAsistir));
 
       ///Validacion Edad
-      setVoFEdad(ValidacionesOpciones(edadNino));
+      setVoFEdad(ValidacionEdad(edadNino));
 
       ///Validacion Fecha
-      setVoFFecha(ValidacionesOpciones(fecha));
+      setVoFFecha(ValidacionFecha(fecha));
 
       //Validacion Asistir
       setVoFAsistir(ValidacionNombre(tiempoAsistir));
@@ -153,37 +155,11 @@ const FormPresentacion = () => {
   const send = async (e) => {
     e.preventDefault();
 
-    //////// Validacion Nombres
-    setVoFnNombre(ValidacionNombreCompleto(nombreNino));
-
-    ////// Validacion Telefono
-    setVoFTel(ValidacionTel(telefono));
-
-    /////Validacion Peticion
-    setVoFPadre(ValidacionNombre(nombrePadre));
-
-    ////Validacion Servicio
-    setVoFServicio(ValidacionesOpciones(servicioAsistir));
-
-    ///Validacion Edad
-    setVoFEdad(ValidacionesOpciones(edadNino));
-
-    ///Validacion Fecha
-    setVoFFecha(ValidacionesOpciones(fecha));
-
-    //Validacion Asistir
-    setVoFAsistir(ValidacionNombre(tiempoAsistir));
-
-    //Validacion Lider
-    setVoFLider(ValidacionNombre(nombreLider));
-
-    setVoFMadre(ValidacionNombre(nombreMadre));
-
     setStart(false);
 
     ///Validacion De todos
     if (
-      edadNino.trim() === '' ||
+      edadNino === '' ||
       telefono === '' ||
       fecha === '' ||
       nombreLider === '' ||
@@ -191,7 +167,10 @@ const FormPresentacion = () => {
       nombreMadre === '' ||
       tiempoAsistir === '' ||
       !nombreNino.match(/^[a-zA-Z\s]+$/) ||
-      !telefono.match('[0-9]{4}[ -][0-9]{4}')
+      !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
+      telefono.length > 9 ||
+      edadNino < 1 ||
+      edadNino > 17
     ) {
       return;
     }
@@ -255,49 +234,50 @@ const FormPresentacion = () => {
               type="date"
               name="fecha"
               Change={save}
-              validation={VoFFecha}
-              value={fecha}
+              validation={VoFFecha.VoF}
+              error={VoFFecha.error}
             />
             <Input
               placeholder="Nombre completo del niño (a)"
               type="text"
               name="nombreNino"
               Change={save}
-              validation={VoFNombre}
-              value={nombreNino}
+              validation={VoFNombre.VoF}
+              error={VoFNombre.error}
             />
             <Input
               placeholder="Edad del niño"
               type="number"
               name="edadNino"
               min="1"
+              max="15"
               Change={save}
-              validation={VoFEdad}
-              value={edadNino}
+              validation={VoFEdad.VoF}
+              error={VoFEdad.error}
             />
             <Input
               placeholder="Nombre del padre"
               type="text"
               name="nombrePadre"
               Change={save}
-              validation={VoFPadre}
-              value={nombrePadre}
+              validation={VoFPadre.VoF}
+              error={VoFPadre.error}
             />
             <Input
               placeholder="Nombre de la Madre"
               type="text"
               name="nombreMadre"
               Change={save}
-              validation={VoFMadre}
-              value={nombreMadre}
+              validation={VoFMadre.VoF}
+              error={VoFMadre.error}
             />
             <Input
               placeholder="No. teléfono (XXXX-XXXX)"
               type="tel"
               name="telefono"
               Change={save}
-              validation={VoFTel}
-              value={telefono}
+              validation={VoFTel.VoF}
+              error={VoFTel.error}
             />
             <Input
               Default="Servicio al que asiste dia domingo"
@@ -309,23 +289,24 @@ const FormPresentacion = () => {
               tipo="option"
               name="servicioAsistir"
               Change={save}
-              validation={VoFServicio}
+              validation={VoFServicio.VoF}
+              error={VoFServicio.error}
             />
             <Input
               placeholder="Nombre de Líder"
               type="text"
               name="nombreLider"
               Change={save}
-              validation={VoFLider}
-              value={nombreLider}
+              validation={VoFLider.VoF}
+              error={VoFLider.error}
             />
             <Input
               placeholder="Tiempo de asistir a la iglesia"
               type="text"
               name="tiempoAsistir"
               Change={save}
-              validation={VoFAsistir}
-              value={tiempoAsistir}
+              validation={VoFAsistir.VoF}
+              error={VoFAsistir.error}
             />
 
             <Button

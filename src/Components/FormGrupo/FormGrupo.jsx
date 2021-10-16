@@ -83,12 +83,12 @@ const FormGrupo = () => {
   const [textpopup, settextpopup] = useState();
 
   ///Validaciones States
-  const [VoFNombre, setVoFNombre] = useState('');
-  const [VoFApellido, setVoFApellido] = useState('');
-  const [VoFTelefono, setVoFTelefono] = useState('');
-  const [VoFGrupo, setVoFGrupo] = useState('');
-  const [VoFHorario, setVoFHorario] = useState('');
-  const [VoFDia, setVoFDia] = useState('');
+  const [VoFNombre, setVoFNombre] = useState({ VoF: '', error: '' });
+  const [VoFApellido, setVoFApellido] = useState({ VoF: '', error: '' });
+  const [VoFTelefono, setVoFTelefono] = useState({ VoF: '', error: '' });
+  const [VoFGrupo, setVoFGrupo] = useState({ VoF: '', error: '' });
+  const [VoFHorario, setVoFHorario] = useState({ VoF: '', error: '' });
+  const [VoFDia, setVoFDia] = useState({ VoF: '', error: '' });
   ///Validaciones States
   const { nombre, apellido, telefonoContacto, horario, dia, tipoGrupo } = info;
   useEffect(() => {
@@ -125,41 +125,35 @@ const FormGrupo = () => {
   const send = async (e) => {
     e.preventDefault();
 
-    ///Validacion Nombre
-    setVoFNombre(ValidacionNombre(nombre));
-
-    ////Validacion Apellido
-    setVoFApellido(ValidacionNombre(apellido));
-
-    ///Validacion Telefono
-    setVoFTelefono(ValidacionTel(telefonoContacto));
-
-    ///Validacion Grupo
-    setVoFGrupo(ValidacionesOpciones(tipoGrupo));
-
-    ///Validacion Horario
-    setVoFHorario(ValidacionesOpciones(horario));
-
-    ///Validacion Dia
-    setVoFDia(ValidacionesOpciones(dia));
-
     setStart(false);
 
     ///Validacion De todos
     if (
-      nombre.trim() === '' ||
-      apellido.trim() === '' ||
+      nombre === '' ||
+      apellido === '' ||
       tipoGrupo === '' ||
       telefonoContacto === '' ||
       horario === '' ||
       dia === '' ||
-      !nombre.match(/^[a-zA-Z]+$/) ||
+      nombre.length < 3 ||
+      nombre.length > 25 ||
+      apellido.length < 3 ||
+      apellido.apellido > 25 ||
+      !nombre.match(/^[a-zA-Z\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
-      !apellido.match(/^[a-zA-Z]+$/)
+      telefonoContacto.length > 9 ||
+      VoFNombre.VoF === true ||
+      VoFApellido.VoF === true ||
+      VoFDia.VoF === true ||
+      VoFGrupo.VoF === true ||
+      VoFHorario.VoF === true ||
+      VoFTelefono.VoF === true
     ) {
       return;
     }
     setStart(true);
+    setpopup(true);
+
     // emailjs
     //   .sendForm(
     //     'service_qtagz2l',
@@ -188,8 +182,6 @@ const FormGrupo = () => {
         console.log(res);
         settextpopup(res.data);
       });
-    setinfo({ nombre: '', apellido: '', telefonoContacto: '' });
-    setpopup(true);
   };
   //////// Validacion
 
@@ -204,16 +196,16 @@ const FormGrupo = () => {
               type="text"
               name="nombre"
               Change={save}
-              validation={VoFNombre}
-              value={nombre}
+              validation={VoFNombre.VoF}
+              error={VoFNombre.error}
             />
             <Input
               placeholder="Apellido"
               type="text"
               name="apellido"
               Change={save}
-              validation={VoFApellido}
-              value={apellido}
+              validation={VoFApellido.VoF}
+              error={VoFApellido.error}
             />
             <Input
               tipo="option"
@@ -227,7 +219,8 @@ const FormGrupo = () => {
                 { opciones: 'Niños', id: '5' },
               ]}
               Change={save}
-              validation={VoFGrupo}
+              validation={VoFGrupo.VoF}
+              error={VoFGrupo.error}
             />
             <Input
               placeholder="Teléfono de contacto (XXXX-XXXX)"
@@ -235,10 +228,9 @@ const FormGrupo = () => {
               name="telefonoContacto"
               Change={save}
               pattern="[0-9]{4}[ -][0-9]{4}"
-              title="A valid phone"
-              validation={VoFTelefono}
+              validation={VoFTelefono.VoF}
+              error={VoFTelefono.error}
               value={telefonoContacto}
-              // requireds
             />
             <Input
               tipo="option"
@@ -250,7 +242,8 @@ const FormGrupo = () => {
                 { opciones: 'Noche', id: '3' },
               ]}
               Change={save}
-              validation={VoFHorario}
+              validation={VoFHorario.VoF}
+              error={VoFHorario.error}
             />
             <Input
               tipo="option"
@@ -266,7 +259,8 @@ const FormGrupo = () => {
                 { opciones: 'Domingo', id: '7' },
               ]}
               Change={save}
-              validation={VoFDia}
+              validation={VoFDia.VoF}
+              error={VoFDia.error}
             />
             <Button
               color="primary"

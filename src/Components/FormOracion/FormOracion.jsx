@@ -79,10 +79,10 @@ const FormOracion = () => {
   const [popup, setpopup] = useState();
   const [textpopup, settextpopup] = useState();
   ///Validaciones States
-  const [VoFNombre, setVoFNombre] = useState('');
-  const [VoFApellido, setVoFApellido] = useState('');
-  const [VoFTelefono, setVoFTelefono] = useState('');
-  const [VoFPeticion, setVoFPeticion] = useState('');
+  const [VoFNombre, setVoFNombre] = useState({ VoF: '', error: '' });
+  const [VoFApellido, setVoFApellido] = useState({ VoF: '', error: '' });
+  const [VoFTelefono, setVoFTelefono] = useState({ VoF: '', error: '' });
+  const [VoFPeticion, setVoFPeticion] = useState({ VoF: '', error: '' });
   ///Validaciones States
 
   const form = useRef();
@@ -114,28 +114,24 @@ const FormOracion = () => {
   const send = async (e) => {
     e.preventDefault();
 
-    ///Validacion Nombre
-    setVoFNombre(ValidacionNombre(nombre));
-
-    ////Validacion Apellido
-    setVoFApellido(ValidacionNombre(apellido));
-
-    ///Validacion Telefono
-    setVoFTelefono(ValidacionTel(telefonoContacto));
-
-    ////Validacion Box
-    setVoFPeticion(ValidacionBox(peticion));
-
     setStart(false);
     ///Validacion De todos
     if (
-      nombre.trim() === '' ||
-      apellido.trim() === '' ||
+      nombre === '' ||
+      apellido === '' ||
       telefonoContacto === '' ||
       peticion === '' ||
+      VoFNombre.VoF === true ||
+      VoFApellido.VoF === true ||
+      VoFTelefono.VoF === true ||
+      VoFPeticion.VoF === true ||
+      !nombre.match(/^[a-zA-Z\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
-      !nombre.match(/^[a-zA-Z]+$/) ||
-      !apellido.match(/^[a-zA-Z]+$/)
+      nombre.length < 3 ||
+      nombre.length > 25 ||
+      apellido.length < 3 ||
+      apellido.apellido > 25
+      
     ) {
       return;
     }
@@ -168,10 +164,8 @@ const FormOracion = () => {
       })
       .then((res) => {
         console.log(res);
-        settextpopup(res.data)
+        settextpopup(res.data);
       });
-
-    setinfo({ nombre: '', apellido: '', telefonoContacto: '', peticion: '' });
   };
   //////// Validacion
 
@@ -186,32 +180,32 @@ const FormOracion = () => {
               type="text"
               name="nombre"
               Change={save}
-              validation={VoFNombre}
-              value={nombre}
+              validation={VoFNombre.VoF}
+              error={VoFNombre.error}
             />
             <Input
               placeholder="Apellido"
               type="text"
               name="apellido"
               Change={save}
-              validation={VoFApellido}
-              value={apellido}
+              validation={VoFApellido.VoF}
+              error={VoFApellido.error}
             />
             <Input
               placeholder="Teléfono de contacto (XXXX-XXXX)"
               type="tel"
               name="telefonoContacto"
               Change={save}
-              validation={VoFTelefono}
-              value={telefonoContacto}
+              validation={VoFTelefono.VoF}
+              error={VoFTelefono.error}
             />
             <Input
               tipo="textarea"
               name="peticion"
               placeholder="Petición:"
               Change={save}
-              validation={VoFPeticion}
-              value={peticion}
+              validation={VoFPeticion.VoF}
+              error={VoFPeticion.error}
             />
 
             <Button

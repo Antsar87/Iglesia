@@ -10,6 +10,7 @@ import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import Popup from '../../utility/popup/Popup';
 import { device } from '../../Responsive/Responsive';
+import { ValidacionBox } from '../Validaciones/ValidacionBox';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -80,9 +81,10 @@ const FormNuevo = () => {
   const [popup, setpopup] = useState('');
 
   ///Validaciones States
-  const [VoFNombre, setVoFNombre] = useState('');
-  const [VoFApellido, setVoFApellido] = useState('');
-  const [VoFTelefono, setVoFTelefono] = useState('');
+  const [VoFNombre, setVoFNombre] = useState({ VoF: '', error: '' });
+  const [VoFApellido, setVoFApellido] = useState({ VoF: '', error: '' });
+  const [VoFTelefono, setVoFTelefono] = useState({ VoF: '', error: '' });
+  const [VoFTextArea, setVoFTextArea] = useState({ VoF: '', error: '' });
   ///Validaciones States
 
   useEffect(() => {
@@ -97,8 +99,11 @@ const FormNuevo = () => {
 
       ////// Validacion Telefono
       setVoFTelefono(ValidacionTel(telefono));
+
+      ///Validacion textArea
+      setVoFTextArea(ValidacionBox(mensaje));
     }
-  }, [nombre, apellido, telefono, start]);
+  }, [nombre, apellido, telefono, mensaje, start]);
 
   const save = (inf) => {
     const { value, name } = inf;
@@ -109,25 +114,25 @@ const FormNuevo = () => {
   const send = async (e) => {
     e.preventDefault();
 
-    ///Validacion Nombre
-    setVoFNombre(ValidacionNombre(nombre));
-
-    ////Validacion Apellido
-    setVoFApellido(ValidacionNombre(apellido));
-
-    ///Validacion Telefono
-    setVoFTelefono(ValidacionTel(telefono));
-
     setStart(false);
 
     ///Validacion De todos
     if (
-      nombre.trim() === '' ||
-      apellido.trim() === '' ||
+      nombre === '' ||
+      apellido === '' ||
       telefono === '' ||
-      !nombre.match(/^[a-zA-Z]+$/) ||
+      mensaje === '' ||
+      nombre.length < 3 ||
+      nombre.length > 25 ||
+      apellido.length < 3 ||
+      apellido.apellido > 25 ||
+      !nombre.match(/^[a-zA-Z\s]+$/) ||
       !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
-      !apellido.match(/^[a-zA-Z]+$/)
+      telefono.length > 9 ||
+      VoFNombre.VoF === true ||
+      VoFApellido.VoF === true ||
+      VoFTelefono.VoF === true ||
+      VoFTextArea.VoF === true
     ) {
       return;
     }
@@ -159,10 +164,8 @@ const FormNuevo = () => {
       })
       .then((res) => {
         console.log(res);
-        settextpopup(res.data)
+        settextpopup(res.data);
       });
-
-    setinfo({ nombre: '', apellido: '', tel: '', area: '' });
   };
   //////// Validacion
 
@@ -177,7 +180,8 @@ const FormNuevo = () => {
               type="text"
               name="nombre"
               Change={save}
-              validation={VoFNombre}
+              validation={VoFNombre.VoF}
+              error={VoFNombre.error}
               value={nombre}
             />
             <Input
@@ -185,7 +189,8 @@ const FormNuevo = () => {
               type="text"
               name="apellido"
               Change={save}
-              validation={VoFApellido}
+              validation={VoFApellido.VoF}
+              error={VoFApellido.error}
               value={apellido}
             />
             <Input
@@ -193,7 +198,8 @@ const FormNuevo = () => {
               type="tel"
               name="telefono"
               Change={save}
-              validation={VoFTelefono}
+              validation={VoFTelefono.VoF}
+              error={VoFTelefono.error}
               value={telefono}
             />
             <Input
@@ -202,6 +208,8 @@ const FormNuevo = () => {
               placeholder="Mensaje/Pregunta:"
               Change={save}
               value={mensaje}
+              validation={VoFTextArea.VoF}
+              error={VoFTextArea.error}
             />
             <Button
               color="primary"

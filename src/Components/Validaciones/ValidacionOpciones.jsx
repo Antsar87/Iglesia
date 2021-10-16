@@ -1,7 +1,7 @@
 export const ValidacionesOpciones = (props) => {
   if (props === '') {
-    return true;
+    return { VoF: true, error: 'Es Obligatorio escoger una opción' };
   } else {
-    return false;
+    return { VoF: false, error: '' };
   }
 };

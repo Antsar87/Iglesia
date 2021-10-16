@@ -1,14 +1,17 @@
 export const ValidacionNombre = (props) => {
   ////Validacion NOmbre
   if (props.trim() === '') {
-    return true;
+    return { VoF: true, error: 'Es obligatorio llenarlo' };
+  } else if (!props.match(/^[a-zA-Z\s]+$/)) {
+    return { VoF: true, error: 'Solo se admite Letras' };
+  } else if (props.length < 3 || props.length > 20) {
+    return {
+      VoF: true,
+      error: 'Minimo 3 caracteres y Maximo 20',
+    };
   }
 
-  if (!props.match(/^[a-zA-Z]+$/)) {
-    return true;
-  }
-
-  return false;
+  return { VoF: false, error: '' };
 };
 
 export const ValidacionNombreCompleto = (props) => {
