@@ -9,12 +9,7 @@ const Textarea = styled.textarea`
   border: none;
   padding: 10px;
   transition: all 1s ease-in-out;
-  color: ${(props) =>
-    props.validation === true
-      ? 'white'
-      : props.validation === false
-      ? 'white'
-      : '#b1aeae'};
+  color: #b1aeae;
 
   border: 3px solid
     ${(props) =>
@@ -24,23 +19,13 @@ const Textarea = styled.textarea`
         ? '#7db846be'
         : 'transparent'};
 
-  background: ${(props) =>
-    props.validation === true
-      ? '#fa5454e0'
-      : props.validation === false
-      ? '#7cb448bd'
-      : 'white'};
+  background: white;
   &:focus {
     outline: none;
   }
 
   &::placeholder {
-    color: ${(props) =>
-      props.validation === true
-        ? 'white'
-        : props.validation === false
-        ? 'white'
-        : '#b1aeae'};
+    color: #b1aeae;
   }
 `;
 const Inputbox = styled.input`
@@ -51,12 +36,7 @@ const Inputbox = styled.input`
   margin-top: 10px;
   border: none;
   padding: 10px;
-  color: ${(props) =>
-    props.validation === true
-      ? 'white'
-      : props.validation === false
-      ? 'white'
-      : '#b1aeae'};
+  color: #b1aeae;
 
   border: 3px solid
     ${(props) =>
@@ -66,26 +46,15 @@ const Inputbox = styled.input`
         ? '#7db846be'
         : 'transparent'};
 
-  background: ${(props) =>
-    props.validation === true
-      ? '#fa5454e0'
-      : props.validation === false
-      ? '#7cb448bd'
-      : 'white'};
+  background: white;
 
   &:focus {
     outline: none;
   }
 
   &::placeholder {
-    color: ${(props) =>
-      props.validation === true
-        ? 'white'
-        : props.validation === false
-        ? 'white'
-        : '#b1aeae'};
+    color: #b1aeae;
   }
-  
 `;
 
 const Select = styled.select`

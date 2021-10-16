@@ -190,7 +190,7 @@ const FormPresentacion = () => {
       nombrePadre === '' ||
       nombreMadre === '' ||
       tiempoAsistir === '' ||
-      !nombreNino.match(/^[a-zA-Z]+$/) ||
+      !nombreNino.match(/^[a-zA-Z\s]+$/) ||
       !telefono.match('[0-9]{4}[ -][0-9]{4}')
     ) {
       return;
@@ -216,7 +216,7 @@ const FormPresentacion = () => {
     //   );
 
     axios
-      .post(`https://node-express-mon.herokuapp.com/api/presentacionNinos`, {
+      .post(`https://node-express-mon.herokuapp.com/api/presentacionNino`, {
         fecha,
         nombreNino,
         edadNino,
