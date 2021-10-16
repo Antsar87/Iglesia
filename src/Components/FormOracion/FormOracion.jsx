@@ -7,7 +7,6 @@ import Input from '../../utility/Input/Input';
 import Button from '../../utility/Button/Button';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
-import { ValidacionBox } from '../Validaciones/ValidacionBox';
 import Popup from '../../utility/popup/Popup';
 // import emailjs from 'emailjs-com';
 import axios from 'axios';

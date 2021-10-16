@@ -8,7 +8,6 @@ import axios from 'axios';
 // import emailjs from 'emailjs-com';
 import {
   ValidacionNombre,
-  ValidacionNombreCompleto,
 } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
