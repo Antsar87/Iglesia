@@ -11,6 +11,7 @@ import Popup from '../../utility/popup/Popup';
 // import emailjs from 'emailjs-com';
 import axios from 'axios';
 import { device } from '../../Responsive/Responsive';
+import { ValidacionBox } from '../Validaciones/ValidacionBox';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -91,16 +92,16 @@ const FormOracion = () => {
       return;
     } else {
       //////// Validacion Nombres
-      setVoFNombre(ValidacionNombre(nombre));
+      setVoFNombre(ValidacionNombre(nombre, 3, 25));
 
       //////// Validacion Apellido
-      setVoFApellido(ValidacionNombre(apellido));
+      setVoFApellido(ValidacionNombre(apellido, 3, 25));
 
       ////// Validacion Telefono
       setVoFTelefono(ValidacionTel(telefonoContacto));
 
       /////Validacion Peticion
-      setVoFPeticion(ValidacionNombre(peticion));
+      setVoFPeticion(ValidacionBox(peticion));
     }
   }, [nombre, apellido, telefonoContacto, peticion, start]);
 
@@ -130,7 +131,6 @@ const FormOracion = () => {
       nombre.length > 25 ||
       apellido.length < 3 ||
       apellido.apellido > 25
-      
     ) {
       return;
     }

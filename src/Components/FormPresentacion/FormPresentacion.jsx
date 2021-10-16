@@ -6,9 +6,7 @@ import Input from '../../utility/Input/Input';
 import Button from '../../utility/Button/Button';
 import axios from 'axios';
 // import emailjs from 'emailjs-com';
-import {
-  ValidacionNombre,
-} from '../Validaciones/ValidacionNombre';
+import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
 import Popup from '../../utility/popup/Popup';
@@ -108,15 +106,15 @@ const FormPresentacion = () => {
       return;
     } else {
       //////// Validacion Nombres
-      setVoFnNombre(ValidacionNombre(nombreNino));
+      setVoFnNombre(ValidacionNombre(nombreNino, 3, 40));
 
       ////// Validacion Telefono
       setVoFTel(ValidacionTel(telefono));
 
       /////Validacion padre
-      setVoFPadre(ValidacionNombre(nombrePadre));
+      setVoFPadre(ValidacionNombre(nombrePadre, 3, 40));
 
-      setVoFMadre(ValidacionNombre(nombreMadre));
+      setVoFMadre(ValidacionNombre(nombreMadre, 3, 40));
       ////Validacion Servicio
       setVoFServicio(ValidacionesOpciones(servicioAsistir));
 
@@ -127,10 +125,10 @@ const FormPresentacion = () => {
       setVoFFecha(ValidacionFecha(fecha));
 
       //Validacion Asistir
-      setVoFAsistir(ValidacionNombre(tiempoAsistir));
+      setVoFAsistir(ValidacionNombre(tiempoAsistir, 3, 25));
 
       //Validacion Lider
-      setVoFLider(ValidacionNombre(nombreLider));
+      setVoFLider(ValidacionNombre(nombreLider, 3, 25));
     }
   }, [
     fecha,
@@ -158,6 +156,7 @@ const FormPresentacion = () => {
 
     ///Validacion De todos
     if (
+      nombreNino === '' ||
       edadNino === '' ||
       telefono === '' ||
       fecha === '' ||
@@ -169,7 +168,13 @@ const FormPresentacion = () => {
       !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
       telefono.length > 9 ||
       edadNino < 1 ||
-      edadNino > 17
+      edadNino > 17 ||
+      nombrePadre.length < 3 ||
+      nombreMadre.length < 3 ||
+      nombrePadre.length > 40 ||
+      nombreMadre.length > 40 ||
+      nombreNino.length < 3 ||
+      nombreNino.length > 40
     ) {
       return;
     }

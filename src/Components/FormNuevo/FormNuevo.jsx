@@ -92,10 +92,10 @@ const FormNuevo = () => {
       return;
     } else {
       //////// Validacion Nombres
-      setVoFNombre(ValidacionNombre(nombre));
+      setVoFNombre(ValidacionNombre(nombre, 3, 25));
 
       //////// Validacion Apellido
-      setVoFApellido(ValidacionNombre(apellido));
+      setVoFApellido(ValidacionNombre(apellido, 3, 25));
 
       ////// Validacion Telefono
       setVoFTelefono(ValidacionTel(telefono));
