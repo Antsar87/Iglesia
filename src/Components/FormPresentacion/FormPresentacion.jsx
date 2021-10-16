@@ -216,7 +216,7 @@ const FormPresentacion = () => {
     //   );
 
     axios
-      .post(`https://node-express-mon.herokuapp.com/email/presentacionNinos`, {
+      .post(`https://node-express-mon.herokuapp.com/api/presentacionNinos`, {
         fecha,
         nombreNino,
         edadNino,

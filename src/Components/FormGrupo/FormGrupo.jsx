@@ -176,7 +176,7 @@ const FormGrupo = () => {
     //     }
     //   );
     axios
-      .post(`https://node-express-mon.herokuapp.com/email/gruposCrecimiento`, {
+      .post(`https://node-express-mon.herokuapp.com/api/gruposCrecimiento`, {
         nombre,
         apellido,
         tipoGrupo,
