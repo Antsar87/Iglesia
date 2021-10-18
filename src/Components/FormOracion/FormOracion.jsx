@@ -125,7 +125,8 @@ const FormOracion = () => {
       VoFApellido.VoF === true ||
       VoFTelefono.VoF === true ||
       VoFPeticion.VoF === true ||
-      !nombre.match(/^[a-zA-Z\s]+$/) ||
+      !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
       nombre.length < 3 ||
       nombre.length > 25 ||

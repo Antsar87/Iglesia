@@ -99,7 +99,7 @@ const FormGrupo = () => {
       setVoFNombre(ValidacionNombre(nombre, 3, 25));
 
       //////// Validacion Apellido
-      setVoFApellido(ValidacionNombre(apellido ,3 , 25));
+      setVoFApellido(ValidacionNombre(apellido, 3, 25));
 
       ////// Validacion Telefono
       setVoFTelefono(ValidacionTel(telefonoContacto));
@@ -139,7 +139,8 @@ const FormGrupo = () => {
       nombre.length > 25 ||
       apellido.length < 3 ||
       apellido.apellido > 25 ||
-      !nombre.match(/^[a-zA-Z\s]+$/) ||
+      !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
       telefonoContacto.length > 9 ||
       VoFNombre.VoF === true ||

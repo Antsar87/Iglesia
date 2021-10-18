@@ -164,7 +164,9 @@ const FormPresentacion = () => {
       nombrePadre === '' ||
       nombreMadre === '' ||
       tiempoAsistir === '' ||
-      !nombreNino.match(/^[a-zA-Z\s]+$/) ||
+      !nombreNino.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      !nombrePadre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      !nombreMadre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
       telefono.length > 9 ||
       edadNino < 1 ||

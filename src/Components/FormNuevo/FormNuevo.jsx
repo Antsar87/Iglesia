@@ -126,7 +126,8 @@ const FormNuevo = () => {
       nombre.length > 25 ||
       apellido.length < 3 ||
       apellido.apellido > 25 ||
-      !nombre.match(/^[a-zA-Z\s]+$/) ||
+      !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
       telefono.length > 9 ||
       VoFNombre.VoF === true ||
