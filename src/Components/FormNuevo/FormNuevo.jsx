@@ -125,9 +125,9 @@ const FormNuevo = () => {
       nombre.length < 3 ||
       nombre.length > 25 ||
       apellido.length < 3 ||
-      apellido.apellido > 25 ||
-      !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
-      !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
+      apellido.length > 25 ||
+      !nombre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
+      !apellido.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
       telefono.length > 9 ||
       VoFNombre.VoF === true ||
