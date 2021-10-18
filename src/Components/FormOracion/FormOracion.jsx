@@ -127,7 +127,7 @@ const FormOracion = () => {
       VoFPeticion.VoF === true ||
       !nombre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !apellido.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
-      !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
+      !telefonoContacto.match('[0-9]{4}[0-9]{4}') ||
       nombre.length < 3 ||
       nombre.length > 25 ||
       apellido.length < 3 ||
@@ -192,7 +192,7 @@ const FormOracion = () => {
               error={VoFApellido.error}
             />
             <Input
-              placeholder="Teléfono de contacto (XXXX-XXXX)"
+              placeholder="Teléfono de contacto (XXXXXXXX)"
               type="tel"
               name="telefonoContacto"
               Change={save}

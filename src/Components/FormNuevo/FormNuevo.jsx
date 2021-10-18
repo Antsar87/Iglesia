@@ -128,7 +128,7 @@ const FormNuevo = () => {
       apellido.length > 25 ||
       !nombre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !apellido.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
-      !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
+      !telefono.match('[0-9]{4}[0-9]{4}') ||
       telefono.length > 9 ||
       VoFNombre.VoF === true ||
       VoFApellido.VoF === true ||
@@ -195,7 +195,7 @@ const FormNuevo = () => {
               value={apellido}
             />
             <Input
-              placeholder="Teléfono de contacto (XXXX-XXXX)"
+              placeholder="Teléfono de contacto (XXXXXXXX)"
               type="tel"
               name="telefono"
               Change={save}

@@ -141,7 +141,7 @@ const FormGrupo = () => {
       apellido.apellido > 25 ||
       !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
-      !telefonoContacto.match('[0-9]{4}[ -][0-9]{4}') ||
+      !telefonoContacto.match('[0-9]{4}[0-9]{4}') ||
       telefonoContacto.length > 9 ||
       VoFNombre.VoF === true ||
       VoFApellido.VoF === true ||
@@ -224,7 +224,7 @@ const FormGrupo = () => {
               error={VoFGrupo.error}
             />
             <Input
-              placeholder="Teléfono de contacto (XXXX-XXXX)"
+              placeholder="Teléfono de contacto (XXXXXXXX)"
               type="tel"
               name="telefonoContacto"
               Change={save}

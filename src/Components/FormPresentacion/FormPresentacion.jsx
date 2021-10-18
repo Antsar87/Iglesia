@@ -167,7 +167,7 @@ const FormPresentacion = () => {
       !nombreNino.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !nombrePadre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !nombreMadre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
-      !telefono.match('[0-9]{4}[ -][0-9]{4}') ||
+      !telefono.match('[0-9]{4}[0-9]{4}') ||
       telefono.length > 9 ||
       edadNino < 1 ||
       edadNino > 17 ||
@@ -278,7 +278,7 @@ const FormPresentacion = () => {
               error={VoFMadre.error}
             />
             <Input
-              placeholder="No. teléfono (XXXX-XXXX)"
+              placeholder="No. teléfono (XXXXXXXX)"
               type="tel"
               name="telefono"
               Change={save}
