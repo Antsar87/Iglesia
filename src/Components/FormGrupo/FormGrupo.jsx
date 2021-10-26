@@ -119,7 +119,7 @@ const FormGrupo = () => {
   const save = (inf) => {
     const { value, name } = inf;
 
-    setinfo({ ...info, [name]: value });
+    setinfo({ ...info, [name]: value.toUpperCase() });
   };
 
   const send = async (e) => {
@@ -138,11 +138,11 @@ const FormGrupo = () => {
       nombre.length < 3 ||
       nombre.length > 25 ||
       apellido.length < 3 ||
-      apellido.apellido > 25 ||
+      apellido.length > 25 ||
       !nombre.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !apellido.match(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[0-9]{4}') ||
-      telefonoContacto.length > 9 ||
+      telefonoContacto.length > 8 ||
       VoFNombre.VoF === true ||
       VoFApellido.VoF === true ||
       VoFDia.VoF === true ||
@@ -289,10 +289,10 @@ const FormGrupo = () => {
       <Popup
         show={popup}
         onHide={() => setpopup(false)}
-        titulo="Espere un Momento"
+        titulo="Espere un momento..."
         reload={true}
       >
-        <h3>{textpopup}</h3>
+        {textpopup && <h3>Tu información ha sido enviada exitosamente, le daremos seguimiento a tu solicitud</h3>}
       </Popup>
     </>
   );

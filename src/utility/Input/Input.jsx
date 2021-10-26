@@ -30,6 +30,7 @@ const Textarea = styled.textarea`
   }
 `;
 const Inputbox = styled.input`
+  text-transform: capitalize;
   font-weight: 700;
   transition: all 1s ease-in-out;
   display: block;

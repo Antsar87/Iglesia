@@ -17,11 +17,16 @@ const Flex = styled.div`
 `;
 
 const Img = styled.img`
-  height: 50px;
+  height: 60px;
   width: 100px;
 
-  @media ${device.mobileM} {
-    height: 50px;
+  @media ${device.mobileL} {
+    height: 90px;
+  width: 150px;
+  }
+  @media ${device.tablet} {
+    height: 90px;
+    width: 200px;
   }
 `;
 

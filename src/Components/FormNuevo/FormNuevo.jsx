@@ -108,7 +108,7 @@ const FormNuevo = () => {
   const save = (inf) => {
     const { value, name } = inf;
 
-    setinfo({ ...info, [name]: value });
+    setinfo({ ...info, [name]: value.toUpperCase() });
   };
 
   const send = async (e) => {
@@ -129,7 +129,7 @@ const FormNuevo = () => {
       !nombre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !apellido.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !telefono.match('[0-9]{4}[0-9]{4}') ||
-      telefono.length > 9 ||
+      telefono.length > 8 ||
       VoFNombre.VoF === true ||
       VoFApellido.VoF === true ||
       VoFTelefono.VoF === true ||
@@ -241,7 +241,7 @@ const FormNuevo = () => {
         titulo="Espere un momento..."
         reload={true}
       >
-        <h3>{textpopup}</h3>
+        {textpopup && <h3>Tu información ha sido enviada exitosamente, le daremos seguimiento a tu solicitud</h3>}
       </Popup>
     </>
   );

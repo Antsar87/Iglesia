@@ -108,7 +108,7 @@ const FormOracion = () => {
   const save = (inf) => {
     const { value, name } = inf;
 
-    setinfo({ ...info, [name]: value });
+    setinfo({ ...info, [name]: value.toUpperCase() });
   };
 
   const send = async (e) => {
@@ -128,10 +128,11 @@ const FormOracion = () => {
       !nombre.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !apellido.match(/^[a-zA-ZáéíóúAÉÍÓÚÑñ\s]+$/) ||
       !telefonoContacto.match('[0-9]{4}[0-9]{4}') ||
+      telefonoContacto.length > 8 ||
       nombre.length < 3 ||
       nombre.length > 25 ||
       apellido.length < 3 ||
-      apellido.apellido > 25
+      apellido.length > 25
     ) {
       return;
     }
@@ -236,7 +237,12 @@ const FormOracion = () => {
         titulo="Espere un momento..."
         reload={true}
       >
-        <h3>{textpopup}</h3>
+        {textpopup && (
+          <h3>
+            Tu información ha sido enviada exitosamente, le daremos seguimiento
+            a tu solicitud
+          </h3>
+        )}
       </Popup>
     </>
   );
