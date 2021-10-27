@@ -108,7 +108,7 @@ const FormNuevo = () => {
   const save = (inf) => {
     const { value, name } = inf;
 
-    setinfo({ ...info, [name]: value.toUpperCase() });
+    setinfo({ ...info, [name]: value });
   };
 
   const send = async (e) => {
@@ -158,10 +158,10 @@ const FormNuevo = () => {
 
     axios
       .post(`https://node-express-mon.herokuapp.com/api/soyNuevo`, {
-        nombre,
-        apellido,
-        telefono,
-        mensaje,
+        nombre: nombre.toUpperCase(),
+        apellido: apellido.toUpperCase(),
+        telefono: telefono.toUpperCase(),
+        mensaje: mensaje.toUpperCase(),
       })
       .then((res) => {
         console.log(res);
@@ -241,7 +241,12 @@ const FormNuevo = () => {
         titulo="Espere un momento..."
         reload={true}
       >
-        {textpopup && <h3>Tu información ha sido enviada exitosamente, le daremos seguimiento a tu solicitud</h3>}
+        {textpopup && (
+          <h3>
+            Tu información ha sido enviada exitosamente, le daremos seguimiento
+            a tu solicitud
+          </h3>
+        )}
       </Popup>
     </>
   );

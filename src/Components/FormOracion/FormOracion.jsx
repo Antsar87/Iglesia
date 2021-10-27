@@ -158,10 +158,10 @@ const FormOracion = () => {
 
     axios
       .post(`https://node-express-mon.herokuapp.com/api/peticionOracion`, {
-        nombre,
-        apellido,
-        telefonoContacto,
-        peticion,
+        nombre: nombre.toUpperCase(),
+        apellido: apellido.toUpperCase(),
+        telefonoContacto: telefonoContacto.toUpperCase(),
+        peticion: peticion.toUpperCase(),
       })
       .then((res) => {
         console.log(res);
