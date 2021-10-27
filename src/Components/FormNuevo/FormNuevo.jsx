@@ -155,9 +155,9 @@ const FormNuevo = () => {
     //       settextpopup('Algo Salio Mal intente despues o mas Tarde');
     //     }
     //   );
-
+// https://node-express-mon.herokuapp.com/api/soyNuevo
     axios
-      .post(`https://node-express-mon.herokuapp.com/api/soyNuevo`, {
+      .post(`https://iglesia-palabra-fiel.herokuapp.com/api/soyNuevo`, {
         nombre: nombre.toUpperCase(),
         apellido: apellido.toUpperCase(),
         telefono: telefono.toUpperCase(),

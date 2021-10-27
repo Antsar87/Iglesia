@@ -157,7 +157,7 @@ const FormOracion = () => {
     //   );
 
     axios
-      .post(`https://node-express-mon.herokuapp.com/api/peticionOracion`, {
+      .post(`https://iglesia-palabra-fiel.herokuapp.com/api/peticionOracion`, {
         nombre: nombre.toUpperCase(),
         apellido: apellido.toUpperCase(),
         telefonoContacto: telefonoContacto.toUpperCase(),

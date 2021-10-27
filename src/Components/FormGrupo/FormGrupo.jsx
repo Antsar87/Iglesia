@@ -171,7 +171,7 @@ const FormGrupo = () => {
     //     }
     //   );
     axios
-      .post(`https://node-express-mon.herokuapp.com/api/gruposCrecimiento`, {
+      .post(`https://iglesia-palabra-fiel.herokuapp.com/api/gruposCrecimiento`, {
         nombre,
         apellido,
         tipoGrupo,
