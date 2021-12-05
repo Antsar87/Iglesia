@@ -13,11 +13,11 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
 `;
 
 const Grid = styled.div`
@@ -71,9 +71,12 @@ const Valores = () => {
             <Fade bottom delay={1100}>
               <p>
                 {' '}
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt
-                expedita sint animi amet ab magnam reprehenderit! Dignissimos
-                nisi adipisci fuga?
+                Queremos vivir en amor y en armonía los unos con los otros como
+                en el inicio de la iglesia primitiva, todos unánimes, en un
+                mismo sentir. Proclamamos que el centro de nuestro corazón lo
+                ocupa nuestro Señor Jesús; que El reina en Palabra Fiel, que su
+                Palabra está siendo esparcida en cada rincón, en cada callejón
+                de las colonias de la zona 18.
               </p>
             </Fade>
           </BoxText>
@@ -84,9 +87,8 @@ const Valores = () => {
             <Fade bottom delay={1100}>
               <p>
                 {' '}
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt
-                expedita sint animi amet ab magnam reprehenderit! Dignissimos
-                nisi adipisci fuga?
+                Palabra Fiel es una gran familia, deseamos rescatar los valores
+                espirituales y morales que Dios establece en su Palabra.
               </p>
             </Fade>
           </BoxText>
@@ -96,10 +98,18 @@ const Valores = () => {
             </Fade>
             <Fade bottom delay={1100}>
               <p>
-                {' '}
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt
-                expedita sint animi amet <br /> ab magnam reprehenderit!
-                Dignissimos nisi adipisci fuga?
+                Amor <br />
+                El amor es uno de los valores más importantes. Es la fuerza que
+                nos impulsa para hacer las cosas bien, por eso es considerado un
+                valor que tiene muy clara la diferencia entre el bien y el mal.
+                Fe <br />
+                La fe genuina es creer en lo que Cristo ha hecho por nosotros.
+                La fe es confiar en Dios todo el tiempo. Esperanza <br />
+                Como cristianos, nuestra esperanza está puesta en Dios.
+                Confiamos en que él cumplirá sus promesas y que no nos fallará
+                cuando más lo necesitemos. Sobre todas las cosas sabemos que,
+                gracias al sacrificio de Jesús en la cruz, tenemos salvación y
+                vida eterna.
               </p>
             </Fade>
           </BoxText>

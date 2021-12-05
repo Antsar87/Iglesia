@@ -56,7 +56,7 @@ const NavIcon = () => {
       id: '3',
     },
     {
-      link: 'https://www.instagram.com/ministeriospalabrafiel/',
+      link: 'https://www.tiktok.com/@ministeriospalabrafiel',
       img: Ticktock,
       id: '4',
     },
