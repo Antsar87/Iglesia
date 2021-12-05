@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import axios from 'axios';
 //////
 import FormFooter from '../../utility/formFooter/FormFooter';
@@ -155,21 +155,21 @@ const FormGrupo = () => {
     setStart(true);
     setpopup(true);
 
-    // emailjs
-    //   .sendForm(
-    //     'service_qtagz2l',
-    //     'template_vil954u',
-    //     e.target,
-    //     'user_mu1Ke4tCNrIblNSCDFKhw'
-    //   )
-    //   .then(
-    //     (result) => {
-    //       settextpopup('Fue Enviado Exitosamente');
-    //     },
-    //     (error) => {
-    //       settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        'service_f8qnxvp',
+        'template_6n89jci',
+        e.target,
+        'user_jflobi4DYtpXXfMyGSlL3'
+      )
+      .then(
+        () => {
+          settextpopup('Fue Enviado Exitosamente');
+        },
+        () => {
+          settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
+        }
+      );
     axios
       .post(`https://iglesia-palabra-fiel.herokuapp.com/api/gruposCrecimiento`, {
         nombre,
