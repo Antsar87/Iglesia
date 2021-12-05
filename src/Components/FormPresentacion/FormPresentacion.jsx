@@ -5,7 +5,7 @@ import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
 import Button from '../../utility/Button/Button';
 import axios from 'axios';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import { ValidacionesOpciones } from '../Validaciones/ValidacionOpciones';
@@ -184,21 +184,21 @@ const FormPresentacion = () => {
     setStart(true);
     setpopup(true);
 
-    // emailjs
-    //   .sendForm(
-    //     'service_qtagz2l',
-    //     'template_vil954u',
-    //     e.target,
-    //     'user_mu1Ke4tCNrIblNSCDFKhw'
-    //   )
-    //   .then(
-    //     (result) => {
-    //       settextpopup('Fue Enviado Excitosamente');
-    //     },
-    //     (error) => {
-    //       settextpopup('Salio Algo Mal Intente de nuevo o mas Tarde');
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        'service_f8qnxvp',
+        'template_6n89jci',
+        e.target,
+        'user_jflobi4DYtpXXfMyGSlL3'
+      )
+      .then(
+        () => {
+          settextpopup('Fue Enviado Exitosamente');
+        },
+        () => {
+          settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
+        }
+      );
 
     axios
       .post(`https://iglesia-palabra-fiel.herokuapp.com/api/presentacionNino`, {
