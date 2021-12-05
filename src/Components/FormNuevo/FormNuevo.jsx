@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import FormFooter from '../../utility/formFooter/FormFooter';
 import FormHeader from '../../utility/formHeader/FormHeader';
 import Input from '../../utility/Input/Input';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import axios from 'axios';
 import Button from '../../utility/Button/Button';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
@@ -140,22 +140,22 @@ const FormNuevo = () => {
     setStart(true);
     setpopup(true);
 
-    // emailjs
-    //   .sendForm(
-    //     'service_qtagz2l',
-    //     'template_xgogu37',
-    //     e.target,
-    //     'user_mu1Ke4tCNrIblNSCDFKhw'
-    //   )
-    //   .then(
-    //     (result) => {
-    //       settextpopup('Fue Enviado Exitosamente');
-    //     },
-    //     (error) => {
-    //       settextpopup('Algo Salio Mal intente despues o mas Tarde');
-    //     }
-    //   );
-// https://node-express-mon.herokuapp.com/api/soyNuevo
+    emailjs
+      .sendForm(
+        'service_f8qnxvp',
+        'template_wqiik7l',
+        e.target,
+        'user_jflobi4DYtpXXfMyGSlL3'
+      )
+      .then(
+        () => {
+          settextpopup('Fue Enviado Exitosamente');
+        },
+        () => {
+          settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
+        }
+      );
+
     axios
       .post(`https://iglesia-palabra-fiel.herokuapp.com/api/soyNuevo`, {
         nombre: nombre.toUpperCase(),

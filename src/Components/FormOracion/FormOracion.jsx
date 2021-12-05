@@ -8,7 +8,7 @@ import Button from '../../utility/Button/Button';
 import { ValidacionNombre } from '../Validaciones/ValidacionNombre';
 import { ValidacionTel } from '../Validaciones/ValidacionTel';
 import Popup from '../../utility/popup/Popup';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import axios from 'axios';
 import { device } from '../../Responsive/Responsive';
 import { ValidacionBox } from '../Validaciones/ValidacionBox';
@@ -139,22 +139,21 @@ const FormOracion = () => {
     setStart(true);
     setpopup(true);
 
-    // emailjs
-    //   .sendForm(
-    //     'service_qtagz2l',
-    //     'template_xgogu37',
-    //     e.target,
-    //     'user_mu1Ke4tCNrIblNSCDFKhw'
-    //   )
-    //   .then(
-    //     (result) => {
-    //       settextpopup("Fue Enviado Exitosamente")
-    //     },
-    //     (error) => {
-    //       settextpopup("Algo Salio Mal Intente de nuevo o mas Tarde")
-
-    //     }
-    //   );
+    emailjs
+    .sendForm(
+      'service_f8qnxvp',
+      'template_wqiik7l',
+      e.target,
+      'user_jflobi4DYtpXXfMyGSlL3'
+    )
+    .then(
+      () => {
+        settextpopup('Fue Enviado Exitosamente');
+      },
+      () => {
+        settextpopup('Algo Salio Mal Intente Despues o mas Tarde');
+      }
+    );
 
     axios
       .post(`https://iglesia-palabra-fiel.herokuapp.com/api/peticionOracion`, {
